@@ -1,0 +1,1388 @@
+<!--
+====================================================
+TASK 2 LINKS TO VERIFY BEFORE SUBMISSION
+====================================================
+
+APPLICATION FORM
+Search:
+TECHBRIDGE_APPLICATION_URL
+
+Replace it with the official TechBridge Internship Application Form URL.
+
+HOME PAGE:
+index.html
+
+PROGRAMS PAGE:
+programs.html
+
+Do not submit until all navigation and application links have been tested.
+====================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBridge Programs | Practical Learning Experiences</title>
+    <meta name="description"
+        content="Explore TechBridge's official practical learning programs: Web Development and Data Analytics. Structured project-based learning with a 30-Day Practical Internship.">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="TechBridge Programs | Practical Learning Experiences">
+    <meta property="og:description"
+        content="Explore TechBridge's official practical learning programs: Web Development and Data Analytics by Baselink Services Limited.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/techbridge-logo.png">
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="shortcut icon" href="./images/techbridge-logo.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==================== HEADER & NAVIGATION ==================== -->
+    <header class="site-header" id="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="brand-link" aria-label="TechBridge Home">
+                <img src="images/techbridge-logo.png" alt="TechBridge Logo" class="brand-logo" width="160" height="46">
+            </a>
+
+            <!-- Pure CSS Responsive Mobile Navigation Toggle -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu">
+            <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </label>
+
+            <nav class="main-nav" aria-label="Main Navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="programs.html" class="nav-link active" aria-current="page">Programs</a></li>
+                    <li class="nav-item"><a href="index.html#internship" class="nav-link">Internship</a></li>
+                    <li class="nav-item"><a href="index.html#community" class="nav-link">Community</a></li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-cta-wrapper">
+                    <!-- Replace TECHBRIDGE_APPLICATION_URL with the official TechBridge Internship Application Form before final submission. -->
+                    <a href="TECHBRIDGE_APPLICATION_URL"
+                        class="btn btn-primary nav-cta-btn" target="_blank" rel="noopener noreferrer">Apply Now</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- ==================== PROGRAMS HERO SECTION ==================== -->
+        <section class="hero-section" id="programs-hero">
+            <div class="bg-glow bg-glow-green" aria-hidden="true"></div>
+            <div class="bg-glow bg-glow-navy" aria-hidden="true"></div>
+            <div class="bg-grid-pattern" aria-hidden="true"></div>
+
+            <div class="container hero-grid">
+                <!-- Hero Content Column -->
+                <div class="hero-content">
+                    <div class="hero-eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        <span class="eyebrow-text">TECHBRIDGE LEARNING PROGRAMS</span>
+                    </div>
+
+                    <h1 class="hero-headline">
+                        Build Practical Skills. <span class="highlight-green">Create Real Experience.</span>
+                    </h1>
+
+                    <div class="official-tagline-badge">
+                        <span class="tagline-icon" aria-hidden="true">“</span>
+                        <p class="tagline-text"><strong>Bridging Learning to Real-World Experience</strong></p>
+                    </div>
+
+                    <p class="hero-description">
+                        TechBridge provides structured, practical learning programs focused on building genuine capability.
+                        Explore our two official tracks—Web Development and Data Analytics—and discover how project-based
+                        tasks translate foundational knowledge into real-world work competence.
+                    </p>
+
+                    <div class="hero-actions">
+                        <!-- Replace TECHBRIDGE_APPLICATION_URL with the official TechBridge Internship Application Form before final submission. -->
+                        <a href="TECHBRIDGE_APPLICATION_URL"
+                            class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">
+                            <span>Apply for Internship</span>
+                            <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a href="#program-overview" class="btn btn-secondary btn-large">
+                            <span>Explore Programs</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-badges-wrapper">
+                        <span class="pill-tag">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" aria-hidden="true">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            Track 01: Web Development
+                        </span>
+                        <span class="pill-tag">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" aria-hidden="true">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                            </svg>
+                            Track 02: Data Analytics
+                        </span>
+                        <span class="pill-tag pill-highlight">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            30-Day Practical Internship
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Hero Visual Column: Dual-Track Architecture Diagram -->
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="dual-path-card">
+                        <div class="dual-path-header">
+                            <div class="dual-path-badge">
+                                <span class="status-ping"></span>
+                                <span>TechBridge Dual-Track System</span>
+                            </div>
+                            <span class="dual-path-subtitle">Official Pathways</span>
+                        </div>
+
+                        <div class="dual-tracks-grid">
+                            <!-- Web Development Stream -->
+                            <div class="track-stream">
+                                <div class="track-stream-header">
+                                    <div class="stream-icon web-color">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2.5">
+                                            <polyline points="16 18 22 12 16 6"></polyline>
+                                            <polyline points="8 6 2 12 8 18"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="stream-title">Web Development</div>
+                                        <div class="stream-tag">Build Websites & Web Apps</div>
+                                    </div>
+                                </div>
+                                <div class="stream-node-list">
+                                    <div class="stream-node-item">
+                                        <span class="stream-node-num">01</span>
+                                        <span>HTML & CSS (Structure & Style)</span>
+                                    </div>
+                                    <div class="stream-connector-arrow">↓</div>
+                                    <div class="stream-node-item">
+                                        <span class="stream-node-num">02</span>
+                                        <span>JavaScript (Interactivity)</span>
+                                    </div>
+                                    <div class="stream-connector-arrow">↓</div>
+                                    <div class="stream-node-item">
+                                        <span class="stream-node-num">03</span>
+                                        <span>Git/GitHub & Web Projects</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Data Analytics Stream -->
+                            <div class="track-stream">
+                                <div class="track-stream-header">
+                                    <div class="stream-icon data-color">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2.5">
+                                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <div class="stream-title">Data Analytics</div>
+                                        <div class="stream-tag">Work With Data & Insights</div>
+                                    </div>
+                                </div>
+                                <div class="stream-node-list">
+                                    <div class="stream-node-item">
+                                        <span class="stream-node-num">01</span>
+                                        <span>Spreadsheets & Cleaning</span>
+                                    </div>
+                                    <div class="stream-connector-arrow">↓</div>
+                                    <div class="stream-node-item">
+                                        <span class="stream-node-num">02</span>
+                                        <span>SQL Database Querying</span>
+                                    </div>
+                                    <div class="stream-connector-arrow">↓</div>
+                                    <div class="stream-node-item">
+                                        <span class="stream-node-num">03</span>
+                                        <span>Visualization & Business Analysis</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Convergence Hub -->
+                        <div class="convergence-hub">
+                            <div class="convergence-info">
+                                <span class="convergence-badge">PRACTICAL INTEGRATION</span>
+                                <div class="convergence-title">30-Day Practical Internship</div>
+                                <div class="convergence-desc">Both tracks advance to structured project tasks & real-world evaluation.</div>
+                            </div>
+                            <div class="convergence-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PROGRAMS OVERVIEW SECTION ==================== -->
+        <section class="programs-section" id="program-overview">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-eyebrow">OFFICIAL LEARNING PATHWAYS</span>
+                    <h2 class="section-heading">Explore Our Programs</h2>
+                    <p class="section-lead">
+                        TechBridge currently provides practical learning experiences in Web Development and Data Analytics.
+                        Each program focuses on real skill acquisition through structured tasks, modern practices, and project deliverables.
+                    </p>
+                </div>
+
+                <div class="overview-grid">
+                    <!-- Overview Card 1: Web Development -->
+                    <article class="overview-card">
+                        <div class="overview-card-header">
+                            <div class="overview-icon-box web-icon">
+                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" aria-hidden="true">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                            </div>
+                            <span class="overview-track-tag">Track 01 &bull; Technology</span>
+                        </div>
+
+                        <div>
+                            <h3 class="overview-card-title">Web Development</h3>
+                            <p class="overview-purpose-text">
+                                The program introduces learners to practical website development, focusing primarily on
+                                designing and building websites and web applications.
+                            </p>
+                        </div>
+
+                        <div>
+                            <div class="overview-skills-label">Official Learning Areas:</div>
+                            <div class="overview-skills-pills">
+                                <span class="overview-skill-pill">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    HTML
+                                </span>
+                                <span class="overview-skill-pill">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    CSS
+                                </span>
+                                <span class="overview-skill-pill">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    JavaScript
+                                </span>
+                                <span class="overview-skill-pill">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Git/GitHub
+                                </span>
+                                <span class="overview-skill-pill">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Building Web Projects
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="overview-card-footer">
+                            <a href="#web-development" class="overview-btn-link">
+                                <span>View Detailed Curriculum</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </a>
+                            <a href="#web-development" class="btn btn-secondary">Explore Track 01</a>
+                        </div>
+                    </article>
+
+                    <!-- Overview Card 2: Data Analytics -->
+                    <article class="overview-card overview-card-data">
+                        <div class="overview-card-header">
+                            <div class="overview-icon-box data-icon">
+                                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" aria-hidden="true">
+                                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                                </svg>
+                            </div>
+                            <span class="overview-track-tag">Track 02 &bull; Analysis</span>
+                        </div>
+
+                        <div>
+                            <h3 class="overview-card-title">Data Analytics</h3>
+                            <p class="overview-purpose-text">
+                                The program introduces learners to practical data analysis, focusing primarily on
+                                working with data and extracting useful insights for informed decisions.
+                            </p>
+                        </div>
+
+                        <div>
+                            <div class="overview-skills-label">Official Learning Areas:</div>
+                            <div class="overview-skills-pills">
+                                <span class="overview-skill-pill">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Spreadsheet Analysis
+                                </span>
+                                <span class="overview-skill-pill">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Data Cleaning
+                                </span>
+                                <span class="overview-skill-pill">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    SQL
+                                </span>
+                                <span class="overview-skill-pill">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Data Visualization
+                                </span>
+                                <span class="overview-skill-pill">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    Business-Focused Analysis
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="overview-card-footer">
+                            <a href="#data-analytics" class="overview-btn-link">
+                                <span>View Detailed Curriculum</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </a>
+                            <a href="#data-analytics" class="btn btn-secondary">Explore Track 02</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== WEB DEVELOPMENT PROGRAM SECTION ==================== -->
+        <section class="track-detail-section" id="web-development">
+            <div class="container">
+                <div class="track-masthead">
+                    <div class="track-masthead-content">
+                        <span class="section-eyebrow">OFFICIAL TRACK 01</span>
+                        <div class="track-title-wrapper">
+                            <h2 class="track-headline">Web Development</h2>
+                            <span class="track-subheading">Design & Build Digital Experiences</span>
+                        </div>
+                        <p class="section-lead">
+                            The program introduces learners to practical website development. Participants learn how modern
+                            web pages are planned, marked up, styled, made interactive, and version-controlled.
+                        </p>
+                    </div>
+
+                    <div class="track-purpose-card">
+                        <div class="track-purpose-label">Program Purpose & Focus</div>
+                        <div class="track-purpose-statement">
+                            Designing and building websites and web applications.
+                        </div>
+                        <p class="track-purpose-desc">
+                            Focus is placed on writing clean code, constructing responsive layouts, adding interactive behaviors,
+                            and delivering working web projects from specifications.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visual Learning Pathway: Web Development -->
+                <div class="learning-path-wrapper">
+                    <div class="path-header">
+                        <h3 class="path-title">Web Development Learning Progression</h3>
+                        <span class="path-badge">5-Step Practical Path</span>
+                    </div>
+
+                    <div class="path-steps-row">
+                        <div class="path-step-item">
+                            <span class="path-step-num-badge">01</span>
+                            <div class="path-step-name">Structure</div>
+                            <div class="path-step-tech">HTML</div>
+                            <p class="path-step-desc">Establish semantic document outlines and accessible content architecture.</p>
+                        </div>
+                        <div class="path-step-item">
+                            <span class="path-step-num-badge">02</span>
+                            <div class="path-step-name">Style</div>
+                            <div class="path-step-tech">CSS</div>
+                            <p class="path-step-desc">Craft modern responsive interfaces using Flexbox, CSS Grid, and design tokens.</p>
+                        </div>
+                        <div class="path-step-item">
+                            <span class="path-step-num-badge">03</span>
+                            <div class="path-step-name">Interaction</div>
+                            <div class="path-step-tech">JavaScript</div>
+                            <p class="path-step-desc">Implement dynamic interface behavior, event handlers, and DOM manipulation.</p>
+                        </div>
+                        <div class="path-step-item">
+                            <span class="path-step-num-badge">04</span>
+                            <div class="path-step-name">Version Control</div>
+                            <div class="path-step-tech">Git / GitHub</div>
+                            <p class="path-step-desc">Track changes, organize revisions, and maintain clean project repositories.</p>
+                        </div>
+                        <div class="path-step-item">
+                            <span class="path-step-num-badge">05</span>
+                            <div class="path-step-name">Build Projects</div>
+                            <div class="path-step-tech">Web Projects</div>
+                            <p class="path-step-desc">Assemble complete web assets into polished, functional portfolio deliverables.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 Official Learning Areas Detailed Cards -->
+                <div class="curriculum-grid">
+                    <!-- Area 1: HTML -->
+                    <article class="curriculum-card">
+                        <div class="curriculum-card-top">
+                            <div class="curriculum-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                            </div>
+                            <span class="curriculum-card-index">AREA 01</span>
+                        </div>
+                        <h4 class="curriculum-card-title">HTML (HyperText Markup Language)</h4>
+                        <p class="curriculum-card-desc">
+                            Master the core structural foundation of the web through semantic, accessible document markup.
+                        </p>
+                        <div class="curriculum-focus-list">
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Semantic tags (&lt;header&gt;, &lt;main&gt;, &lt;section&gt;, &lt;nav&gt;)</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Accessible form controls, inputs, and validation attributes</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Document metadata, viewport configuration, and SEO fundamentals</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Area 2: CSS -->
+                    <article class="curriculum-card">
+                        <div class="curriculum-card-top">
+                            <div class="curriculum-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                </svg>
+                            </div>
+                            <span class="curriculum-card-index">AREA 02</span>
+                        </div>
+                        <h4 class="curriculum-card-title">CSS (Cascading Style Sheets)</h4>
+                        <p class="curriculum-card-desc">
+                            Design responsive, aesthetically polished interfaces that look sharp across desktop, tablet, and mobile screens.
+                        </p>
+                        <div class="curriculum-focus-list">
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Flexbox alignment systems and CSS Grid multi-column layouts</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>CSS custom properties (variables) for consistent design tokens</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Fluid typography with clamp(), media queries, and smooth transitions</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Area 3: JavaScript -->
+                    <article class="curriculum-card">
+                        <div class="curriculum-card-top">
+                            <div class="curriculum-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                </svg>
+                            </div>
+                            <span class="curriculum-card-index">AREA 03</span>
+                        </div>
+                        <h4 class="curriculum-card-title">JavaScript</h4>
+                        <p class="curriculum-card-desc">
+                            Bring web pages to life with interactive user experiences and programmatic document control.
+                        </p>
+                        <div class="curriculum-focus-list">
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Variables, conditional logic, arrays, and functions</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Document Object Model (DOM) selection and manipulation</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Event listeners for clicks, form submissions, and user triggers</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Area 4: Git/GitHub -->
+                    <article class="curriculum-card">
+                        <div class="curriculum-card-top">
+                            <div class="curriculum-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="18" cy="18" r="3"></circle>
+                                    <circle cx="6" cy="6" r="3"></circle>
+                                    <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+                                    <line x1="6" y1="9" x2="6" y2="21"></line>
+                                </svg>
+                            </div>
+                            <span class="curriculum-card-index">AREA 04</span>
+                        </div>
+                        <h4 class="curriculum-card-title">Git / GitHub</h4>
+                        <p class="curriculum-card-desc">
+                            Adopt professional version control workflows to track project history, commits, and code repositories.
+                        </p>
+                        <div class="curriculum-focus-list">
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Repository initialization, staging files, and descriptive commit messages</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Pushing local code to GitHub remote repositories</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Branching, merging basics, and managing project milestones</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Area 5: Building Web Projects -->
+                    <article class="curriculum-card">
+                        <div class="curriculum-card-top">
+                            <div class="curriculum-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </div>
+                            <span class="curriculum-card-index">AREA 05</span>
+                        </div>
+                        <h4 class="curriculum-card-title">Building Web Projects</h4>
+                        <p class="curriculum-card-desc">
+                            Synthesize all foundational tools by completing end-to-end practical web tasks from specifications.
+                        </p>
+                        <div class="curriculum-focus-list">
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Translating task briefs and UI requirements into working code</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Refactoring code structure for cleanliness, modularity, and standards</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Building demonstrable projects that validate genuine development capability</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== DATA ANALYTICS PROGRAM SECTION ==================== -->
+        <section class="track-detail-section" id="data-analytics">
+            <div class="container">
+                <div class="track-masthead">
+                    <div class="track-masthead-content">
+                        <span class="section-eyebrow">OFFICIAL TRACK 02</span>
+                        <div class="track-title-wrapper">
+                            <h2 class="track-headline">Data Analytics</h2>
+                            <span class="track-subheading">Turn Data Into Useful Insights</span>
+                        </div>
+                        <p class="section-lead">
+                            The program introduces learners to practical data analysis. Participants learn how raw datasets
+                            are audited, cleaned, queried with SQL, visually communicated, and framed around real business questions.
+                        </p>
+                    </div>
+
+                    <div class="track-purpose-card">
+                        <div class="track-purpose-label">Program Purpose & Focus</div>
+                        <div class="track-purpose-statement">
+                            Working with data and extracting insights.
+                        </div>
+                        <p class="track-purpose-desc">
+                            Focus is placed on inspecting tabular datasets, eliminating inaccuracies, executing database queries,
+                            generating visual reporting, and deriving findings that support practical decision-making.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visual Learning Pathway: Data Analytics -->
+                <div class="learning-path-wrapper">
+                    <div class="path-header">
+                        <h3 class="path-title">Data Analytics Analytical Progression</h3>
+                        <span class="path-badge">5-Step Practical Path</span>
+                    </div>
+
+                    <div class="path-steps-row">
+                        <div class="path-step-item">
+                            <span class="path-step-num-badge">01</span>
+                            <div class="path-step-name">Collect &amp; Understand</div>
+                            <div class="path-step-tech">Spreadsheet Analysis</div>
+                            <p class="path-step-desc">Organize tabular records, audit schemas, and evaluate data distributions.</p>
+                        </div>
+                        <div class="path-step-item">
+                            <span class="path-step-num-badge">02</span>
+                            <div class="path-step-name">Clean</div>
+                            <div class="path-step-tech">Data Cleaning</div>
+                            <p class="path-step-desc">Detect duplicates, resolve missing entries, and standardize formatting.</p>
+                        </div>
+                        <div class="path-step-item">
+                            <span class="path-step-num-badge">03</span>
+                            <div class="path-step-name">Query</div>
+                            <div class="path-step-tech">SQL</div>
+                            <p class="path-step-desc">Write structured queries to filter, aggregate, group, and join records.</p>
+                        </div>
+                        <div class="path-step-item">
+                            <span class="path-step-num-badge">04</span>
+                            <div class="path-step-name">Visualize</div>
+                            <div class="path-step-tech">Data Visualization</div>
+                            <p class="path-step-desc">Transform numerical findings into clear charts, trend lines, and graphs.</p>
+                        </div>
+                        <div class="path-step-item">
+                            <span class="path-step-num-badge">05</span>
+                            <div class="path-step-name">Extract Insights</div>
+                            <div class="path-step-tech">Business Analysis</div>
+                            <p class="path-step-desc">Synthesize conclusions that answer operational challenges and business goals.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 Official Learning Areas Detailed Cards -->
+                <div class="curriculum-grid">
+                    <!-- Area 1: Spreadsheet Analysis -->
+                    <article class="curriculum-card data-theme">
+                        <div class="curriculum-card-top">
+                            <div class="curriculum-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                            </div>
+                            <span class="curriculum-card-index">AREA 01</span>
+                        </div>
+                        <h4 class="curriculum-card-title">Spreadsheet Analysis</h4>
+                        <p class="curriculum-card-desc">
+                            Harness fundamental spreadsheet environments to manipulate tabular records, calculate key figures, and organize data.
+                        </p>
+                        <div class="curriculum-focus-list">
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Core mathematical, statistical, and logical formulas</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Lookup functions, conditional references, and data cross-matching</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Pivot summaries, multi-attribute filtering, and structured table ranges</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Area 2: Data Cleaning -->
+                    <article class="curriculum-card data-theme">
+                        <div class="curriculum-card-top">
+                            <div class="curriculum-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                </svg>
+                            </div>
+                            <span class="curriculum-card-index">AREA 02</span>
+                        </div>
+                        <h4 class="curriculum-card-title">Data Cleaning</h4>
+                        <p class="curriculum-card-desc">
+                            Detect and rectify flaws in raw datasets to ensure subsequent analysis is reliable, accurate, and trustworthy.
+                        </p>
+                        <div class="curriculum-focus-list">
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Identifying and purging redundant duplicate rows and errant spaces</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Handling missing data values through sound imputation or exclusion</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Standardizing date stamps, textual casings, and numerical data types</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Area 3: SQL -->
+                    <article class="curriculum-card data-theme">
+                        <div class="curriculum-card-top">
+                            <div class="curriculum-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                </svg>
+                            </div>
+                            <span class="curriculum-card-index">AREA 03</span>
+                        </div>
+                        <h4 class="curriculum-card-title">SQL (Structured Query Language)</h4>
+                        <p class="curriculum-card-desc">
+                            Query relational databases to extract specific information, filter complex tables, and summarize business records.
+                        </p>
+                        <div class="curriculum-focus-list">
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>SELECT, WHERE filtering, ORDER BY, and LIMIT syntax</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Aggregate functions (COUNT, SUM, AVG) combined with GROUP BY</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Relational table JOIN operations (INNER, LEFT) to combine data</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Area 4: Data Visualization -->
+                    <article class="curriculum-card data-theme">
+                        <div class="curriculum-card-top">
+                            <div class="curriculum-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                                    <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                                </svg>
+                            </div>
+                            <span class="curriculum-card-index">AREA 04</span>
+                        </div>
+                        <h4 class="curriculum-card-title">Data Visualization</h4>
+                        <p class="curriculum-card-desc">
+                            Present complex numbers through intuitive visual forms that make patterns immediately understandable to stakeholders.
+                        </p>
+                        <div class="curriculum-focus-list">
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Selecting effective chart types (bar charts, line graphs, pie charts)</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Clean axis labeling, clear legends, and visual hierarchy principles</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Highlighting key trends, distribution shifts, and standout outliers</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Area 5: Business-Focused Analysis -->
+                    <article class="curriculum-card data-theme">
+                        <div class="curriculum-card-top">
+                            <div class="curriculum-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                            </div>
+                            <span class="curriculum-card-index">AREA 05</span>
+                        </div>
+                        <h4 class="curriculum-card-title">Business-Focused Analysis</h4>
+                        <p class="curriculum-card-desc">
+                            Connect mathematical conclusions to organizational questions, explaining what the data indicates for real-world scenarios.
+                        </p>
+                        <div class="curriculum-focus-list">
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Translating analytical findings into concise, readable summaries</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Framing inquiries around realistic scenario datasets and questions</span>
+                            </div>
+                            <div class="curriculum-focus-item">
+                                <span class="curriculum-bullet-dot"></span>
+                                <span>Supporting structured evaluation with objective, data-backed evidence</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PROGRAM COMPARISON SECTION ==================== -->
+        <section class="comparison-section" id="comparison">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-eyebrow">HEAD-TO-HEAD COMPARISON</span>
+                    <h2 class="section-heading">Two Paths. Different Skills. One Practical Focus.</h2>
+                    <p class="section-lead">
+                        Compare TechBridge's two learning tracks side by side to understand their primary objectives,
+                        core technologies, and day-to-day focus. Both programs share the same commitment to practical, project-based capability.
+                    </p>
+                </div>
+
+                <div class="comparison-wrapper">
+                    <div class="comparison-table-scroll">
+                        <table class="comparison-table" aria-label="TechBridge Program Comparison Table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Dimension</th>
+                                    <th scope="col">
+                                        <span class="comparison-th-badge web-badge">Track 01</span>
+                                        <div>Web Development</div>
+                                    </th>
+                                    <th scope="col">
+                                        <span class="comparison-th-badge data-badge">Track 02</span>
+                                        <div>Data Analytics</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="dim-header">Primary Focus</td>
+                                    <td class="web-val">
+                                        <strong>Designing and building websites and web applications</strong>
+                                    </td>
+                                    <td class="data-val">
+                                        <strong>Working with data and extracting useful insights</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="dim-header">Official Learning Areas</td>
+                                    <td class="web-val">
+                                        <div class="comparison-inline-list">
+                                            <div class="comparison-inline-item">
+                                                <svg class="comparison-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                                HTML
+                                            </div>
+                                            <div class="comparison-inline-item">
+                                                <svg class="comparison-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                                CSS
+                                            </div>
+                                            <div class="comparison-inline-item">
+                                                <svg class="comparison-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                                JavaScript
+                                            </div>
+                                            <div class="comparison-inline-item">
+                                                <svg class="comparison-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                                Git/GitHub
+                                            </div>
+                                            <div class="comparison-inline-item">
+                                                <svg class="comparison-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                                Building Web Projects
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="data-val">
+                                        <div class="comparison-inline-list">
+                                            <div class="comparison-inline-item">
+                                                <svg class="comparison-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                                Spreadsheet Analysis
+                                            </div>
+                                            <div class="comparison-inline-item">
+                                                <svg class="comparison-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                                Data Cleaning
+                                            </div>
+                                            <div class="comparison-inline-item">
+                                                <svg class="comparison-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                                SQL
+                                            </div>
+                                            <div class="comparison-inline-item">
+                                                <svg class="comparison-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                                Data Visualization
+                                            </div>
+                                            <div class="comparison-inline-item">
+                                                <svg class="comparison-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                                Business-Focused Analysis
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="dim-header">Practical Workflow</td>
+                                    <td class="web-val">
+                                        Structure &rarr; Style &rarr; Interaction &rarr; Version Control &rarr; Build Projects
+                                    </td>
+                                    <td class="data-val">
+                                        Collect &amp; Understand &rarr; Clean &rarr; Query &rarr; Visualize &rarr; Extract Business Insights
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="dim-header">Core Deliverables</td>
+                                    <td class="web-val">
+                                        Responsive web pages, styled layouts, interactive interfaces, GitHub repository commits, and complete web projects.
+                                    </td>
+                                    <td class="data-val">
+                                        Validated spreadsheets, cleaned datasets, SQL query scripts, analytical visual charts, and business insight reports.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="dim-header">Alignment Profile</td>
+                                    <td class="web-val">
+                                        Learners who enjoy visual structuring, user interfaces, frontend coding, and crafting functional products on the web.
+                                    </td>
+                                    <td class="data-val">
+                                        Learners who enjoy pattern detection, numbers, structured database queries, charts, and solving business questions with data.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="dim-header">Internship Phase</td>
+                                    <td class="web-val">
+                                        Qualifies for 30-Day Practical Internship in Web Development tasks.
+                                    </td>
+                                    <td class="data-val">
+                                        Qualifies for 30-Day Practical Internship in Data Analytics tasks.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SKILLS EXPERIENCE SECTION ==================== -->
+        <section class="skills-section" id="skills">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-eyebrow">CONCRETE SKILL MAPPING</span>
+                    <h2 class="section-heading">Skills You Can Develop</h2>
+                    <p class="section-lead">
+                        Every skill taught in TechBridge programs is rooted in real-world utility. Here is a direct breakdown
+                        of the concrete skills you cultivate across both official tracks.
+                    </p>
+                </div>
+
+                <div class="skills-container-grid">
+                    <!-- Web Development Skills Group -->
+                    <div class="skills-track-group">
+                        <div class="skills-group-header">
+                            <div class="skills-group-title">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                                <span>Web Development Skills</span>
+                            </div>
+                            <span class="skills-group-count">5 Core Areas</span>
+                        </div>
+
+                        <div class="skills-items-stack">
+                            <!-- Skill 1 -->
+                            <div class="skill-row-card">
+                                <div class="skill-row-icon web-color">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                </div>
+                                <div class="skill-row-info">
+                                    <div class="skill-row-name">HTML</div>
+                                    <p class="skill-row-desc">Semantic document structuring, modern web standards, and accessible markup formatting.</p>
+                                </div>
+                            </div>
+                            <!-- Skill 2 -->
+                            <div class="skill-row-card">
+                                <div class="skill-row-icon web-color">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>
+                                </div>
+                                <div class="skill-row-info">
+                                    <div class="skill-row-name">CSS</div>
+                                    <p class="skill-row-desc">Responsive layouts, Flexbox alignment, CSS Grid architectures, and custom properties.</p>
+                                </div>
+                            </div>
+                            <!-- Skill 3 -->
+                            <div class="skill-row-card">
+                                <div class="skill-row-icon web-color">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                </div>
+                                <div class="skill-row-info">
+                                    <div class="skill-row-name">JavaScript</div>
+                                    <p class="skill-row-desc">DOM selection, dynamic page interactions, conditional logic, and user event handling.</p>
+                                </div>
+                            </div>
+                            <!-- Skill 4 -->
+                            <div class="skill-row-card">
+                                <div class="skill-row-icon web-color">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M13 6h3a2 2 0 0 1 2 2v7"></path><line x1="6" y1="9" x2="6" y2="21"></line></svg>
+                                </div>
+                                <div class="skill-row-info">
+                                    <div class="skill-row-name">Git / GitHub</div>
+                                    <p class="skill-row-desc">Version tracking, branching, commits, repository publishing, and project history control.</p>
+                                </div>
+                            </div>
+                            <!-- Skill 5 -->
+                            <div class="skill-row-card">
+                                <div class="skill-row-icon web-color">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                                </div>
+                                <div class="skill-row-info">
+                                    <div class="skill-row-name">Building Web Projects</div>
+                                    <p class="skill-row-desc">Synthesizing markup, styling, and behavior into complete, production-ready web implementations.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data Analytics Skills Group -->
+                    <div class="skills-track-group">
+                        <div class="skills-group-header">
+                            <div class="skills-group-title">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                                </svg>
+                                <span>Data Analytics Skills</span>
+                            </div>
+                            <span class="skills-group-count">5 Core Areas</span>
+                        </div>
+
+                        <div class="skills-items-stack">
+                            <!-- Skill 1 -->
+                            <div class="skill-row-card">
+                                <div class="skill-row-icon data-color">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                                </div>
+                                <div class="skill-row-info">
+                                    <div class="skill-row-name">Spreadsheet Analysis</div>
+                                    <p class="skill-row-desc">Tabular calculations, statistical functions, multi-field pivot models, and range summaries.</p>
+                                </div>
+                            </div>
+                            <!-- Skill 2 -->
+                            <div class="skill-row-card">
+                                <div class="skill-row-icon data-color">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                                </div>
+                                <div class="skill-row-info">
+                                    <div class="skill-row-name">Data Cleaning</div>
+                                    <p class="skill-row-desc">Auditing anomalies, deduplication, managing missing attributes, and normalizing formats.</p>
+                                </div>
+                            </div>
+                            <!-- Skill 3 -->
+                            <div class="skill-row-card">
+                                <div class="skill-row-icon data-color">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path></svg>
+                                </div>
+                                <div class="skill-row-info">
+                                    <div class="skill-row-name">SQL</div>
+                                    <p class="skill-row-desc">Relational database queries, record filtering, aggregate calculations, and multi-table joins.</p>
+                                </div>
+                            </div>
+                            <!-- Skill 4 -->
+                            <div class="skill-row-card">
+                                <div class="skill-row-icon data-color">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+                                </div>
+                                <div class="skill-row-info">
+                                    <div class="skill-row-name">Data Visualization</div>
+                                    <p class="skill-row-desc">Translating numerical records into intuitive bar charts, trend graphs, and report dashboards.</p>
+                                </div>
+                            </div>
+                            <!-- Skill 5 -->
+                            <div class="skill-row-card">
+                                <div class="skill-row-icon data-color">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+                                </div>
+                                <div class="skill-row-info">
+                                    <div class="skill-row-name">Business-Focused Analysis</div>
+                                    <p class="skill-row-desc">Connecting empirical observations to business context, practical conclusions, and decisions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== WHICH PROGRAM INTERESTS YOU SECTION ==================== -->
+        <section class="guidance-section" id="guidance">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-eyebrow">CHOOSING YOUR FOCUS</span>
+                    <h2 class="section-heading">Which Learning Path Interests You?</h2>
+                    <p class="section-lead">
+                        Both programs emphasize hands-on experience and real-world work scenarios.
+                        Consider your natural interests to select the track that aligns with your goals.
+                    </p>
+                </div>
+
+                <div class="guidance-grid">
+                    <!-- Choice 1: Web Development -->
+                    <article class="guidance-card">
+                        <div>
+                            <span class="guidance-top-badge web-badge">Track 01 &bull; Web Development</span>
+                            <h3 class="guidance-title">Choose Web Development if you are interested in:</h3>
+                        </div>
+
+                        <div class="guidance-focus-quote">
+                            "Designing and building websites and web applications."
+                        </div>
+
+                        <div class="guidance-list">
+                            <div class="guidance-list-item">
+                                <div class="guidance-check-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </div>
+                                <span>Structuring clean document hierarchies using semantic HTML5</span>
+                            </div>
+                            <div class="guidance-list-item">
+                                <div class="guidance-check-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </div>
+                                <span>Styling responsive, visually appealing interfaces across all device screen sizes</span>
+                            </div>
+                            <div class="guidance-list-item">
+                                <div class="guidance-check-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </div>
+                                <span>Adding interactive behavior and event handling with JavaScript</span>
+                            </div>
+                            <div class="guidance-list-item">
+                                <div class="guidance-check-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </div>
+                                <span>Organizing code repositories with Git and publishing projects on GitHub</span>
+                            </div>
+                            <div class="guidance-list-item">
+                                <div class="guidance-check-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </div>
+                                <span>Building complete, tangible web projects from task specifications</span>
+                            </div>
+                        </div>
+
+                        <div class="guidance-actions">
+                            <a href="#web-development" class="btn btn-secondary">
+                                <span>Review Web Dev Details</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Choice 2: Data Analytics -->
+                    <article class="guidance-card">
+                        <div>
+                            <span class="guidance-top-badge data-badge">Track 02 &bull; Data Analytics</span>
+                            <h3 class="guidance-title">Choose Data Analytics if you are interested in:</h3>
+                        </div>
+
+                        <div class="guidance-focus-quote">
+                            "Working with data and extracting useful insights."
+                        </div>
+
+                        <div class="guidance-list">
+                            <div class="guidance-list-item">
+                                <div class="guidance-check-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </div>
+                                <span>Exploring tabular spreadsheets and discovering trends within numerical datasets</span>
+                            </div>
+                            <div class="guidance-list-item">
+                                <div class="guidance-check-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </div>
+                                <span>Cleaning messy records, resolving missing values, and preparing data for analysis</span>
+                            </div>
+                            <div class="guidance-list-item">
+                                <div class="guidance-check-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </div>
+                                <span>Writing structured SQL queries to filter, aggregate, and join database records</span>
+                            </div>
+                            <div class="guidance-list-item">
+                                <div class="guidance-check-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </div>
+                                <span>Creating visual charts and graphs that convey complex figures simply</span>
+                            </div>
+                            <div class="guidance-list-item">
+                                <div class="guidance-check-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                </div>
+                                <span>Deriving business-focused conclusions that address practical organizational questions</span>
+                            </div>
+                        </div>
+
+                        <div class="guidance-actions">
+                            <a href="#data-analytics" class="btn btn-secondary">
+                                <span>Review Data Details</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="guidance-grounding-callout">
+                    <div class="grounding-icon-box">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                    </div>
+                    <div class="grounding-text">
+                        <strong>Practical Progression:</strong> Whichever learning path you choose, TechBridge emphasizes
+                        project-based assignments rather than passive viewing. Both tracks connect directly into the
+                        <strong>30-Day Practical Internship</strong> for immersive, scenario-based experience.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== APPLICATION CTA SECTION ==================== -->
+        <section class="programs-cta-section" id="apply">
+            <div class="bg-glow bg-glow-green" aria-hidden="true"></div>
+            <div class="bg-glow bg-glow-navy" aria-hidden="true"></div>
+            <div class="bg-grid-pattern" aria-hidden="true"></div>
+
+            <div class="container">
+                <div class="programs-cta-content">
+                    <span class="section-eyebrow eyebrow-light">TAKE THE NEXT STEP</span>
+                    <h2 class="programs-cta-heading">Ready to Start Your TechBridge Journey?</h2>
+                    <p class="programs-cta-lead">
+                        Join TechBridge by Baselink Services Limited. Apply for the practical internship program and begin
+                        bridging your learning to real-world experience in Web Development or Data Analytics.
+                    </p>
+
+                    <div class="programs-cta-actions">
+                        <!-- Replace TECHBRIDGE_APPLICATION_URL with the official TechBridge Internship Application Form before final submission. -->
+                        <a href="TECHBRIDGE_APPLICATION_URL"
+                            class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">
+                            <span>Apply for TechBridge Internship</span>
+                            <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a href="index.html" class="btn btn-secondary btn-large">
+                            <span>Return to Home</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-brand-col">
+                    <img src="images/techbridge-logo.png" alt="TechBridge Logo" class="footer-logo" width="160"
+                        height="46">
+                    <p class="footer-brand-title"><strong>TechBridge</strong> by Baselink Services Limited</p>
+                    <p class="footer-tagline">"Bridging Learning to Real-World Experience"</p>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About TechBridge</a></li>
+                        <li><a href="programs.html">Official Programs</a></li>
+                        <li><a href="index.html#internship">30-Day Internship</a></li>
+                        <li><a href="index.html#community">Community</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4 class="footer-heading">Official Tracks</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#web-development">Web Development Track</a></li>
+                        <li><a href="#data-analytics">Data Analytics Track</a></li>
+                        <li><a href="index.html#internship">Internship Benefits</a></li>
+                        <!-- Replace TECHBRIDGE_APPLICATION_URL with the official TechBridge Internship Application Form before final submission. -->
+                        <li><a href="TECHBRIDGE_APPLICATION_URL" target="_blank"
+                                rel="noopener noreferrer">Apply for Internship</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact-col">
+                    <h4 class="footer-heading">Official Channels</h4>
+                    <p class="footer-contact-item">
+                        <span class="contact-item-label">Email:</span>
+                        <a href="mailto:techbridgebaslink@gmail.com">techbridgebaslink@gmail.com</a>
+                    </p>
+                    <p class="footer-contact-item">
+                        <span class="contact-item-label">LinkedIn:</span>
+                        <a href="https://www.linkedin.com/company/techbridge-services/" target="_blank"
+                            rel="noopener noreferrer">techbridge-services</a>
+                    </p>
+                    <p class="footer-contact-item">
+                        <span class="contact-item-label">Facebook:</span>
+                        <a href="https://www.facebook.com/p/Baselink-Services-100066771475783/" target="_blank"
+                            rel="noopener noreferrer">Baselink Services Limited</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright-text">
+                    &copy; 2026 TechBridge by Baselink Services Limited. All rights reserved.
+                </p>
+                <div class="footer-bottom-links">
+                    <a href="#programs-hero">Back to Top &uarr;</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
