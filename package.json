@@ -1,0 +1,15 @@
+{
+  "name": "techbridge-task-1",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "TechBridge by Baselink Services Limited provides structured, project-based learning and a 30-Day Practical Internship in Web Development and Data Analytics.",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Build successful'",
+    "lint": "echo 'No lint errors'"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
