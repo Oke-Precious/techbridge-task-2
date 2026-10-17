@@ -288,11 +288,16 @@ input:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1360px;
+  width: 100%;
+  padding-left: clamp(16px, 2.5vw, 32px);
+  padding-right: clamp(16px, 2.5vw, 32px);
 }
 
 .brand-link {
   display: inline-flex;
   align-items: center;
+  flex-shrink: 0;
   transition: opacity 0.2s ease;
 }
 
@@ -301,7 +306,7 @@ input:focus-visible {
 }
 
 .brand-logo {
-  max-height: 48px;
+  max-height: 42px;
   width: auto;
   object-fit: contain;
 }
@@ -309,21 +314,37 @@ input:focus-visible {
 .main-nav {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 2vw, 32px);
+  gap: clamp(10px, 1.2vw, 24px);
+  flex-shrink: 0;
 }
 
 .nav-list {
   display: flex;
   align-items: center;
-  gap: clamp(10px, 1.5vw, 22px);
+  gap: clamp(8px, 1.05vw, 18px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;
+}
+
+.nav-item {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-link {
-  font-size: 0.95rem;
+  font-size: clamp(0.84rem, 0.92vw, 0.93rem);
   font-weight: 600;
   color: var(--text-dark);
   position: relative;
   padding: 6px 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .nav-link::after {
@@ -357,9 +378,17 @@ input:focus-visible {
   width: 100%;
 }
 
+.nav-cta-wrapper {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
 .nav-cta-btn {
-  padding: 10px 22px;
-  font-size: 0.9rem;
+  padding: 8px 18px;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  border-radius: var(--radius-pill);
 }
 
 /* Pure CSS Mobile Navigation via Checkbox */
@@ -1731,8 +1760,8 @@ input:focus-visible {
   }
 }
 
-/* Tablet (max-width: 768px) */
-@media (max-width: 768px) {
+/* Navigation Breakpoint: Tablet & Small Laptop (max-width: 1024px) */
+@media (max-width: 1024px) {
   :root {
     --header-height: 72px;
   }
@@ -1764,6 +1793,8 @@ input:focus-visible {
     opacity: 0;
     pointer-events: none;
     transition: var(--transition-normal);
+    max-height: calc(100vh - var(--header-height));
+    overflow-y: auto;
   }
 
   /* Toggle Checked State */
@@ -1793,6 +1824,10 @@ input:focus-visible {
     width: 100%;
   }
 
+  .nav-item {
+    width: 100%;
+  }
+
   .nav-link {
     display: block;
     width: 100%;
@@ -1808,7 +1843,13 @@ input:focus-visible {
 
   .nav-cta-btn {
     width: 100%;
+    text-align: center;
+    justify-content: center;
   }
+}
+
+/* Tablet (max-width: 768px) */
+@media (max-width: 768px) {
 
   /* Hero Section */
   .hero-section {
