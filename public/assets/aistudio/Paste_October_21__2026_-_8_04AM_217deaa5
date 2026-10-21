@@ -1,0 +1,1953 @@
+I am continuing my official TechBridge Web Development Internship project.
+
+This is TASK 6:
+
+BUILD THE TECHBRIDGE INTERN DASHBOARD
+
+I have already completed Tasks 1–5.
+
+I am uploading my CURRENT project files from Tasks 1–5 together with the official TechBridge logo.
+
+IMPORTANT:
+
+Before writing or modifying code:
+
+1. Carefully inspect ALL files I upload.
+2. Understand the existing TechBridge visual identity.
+3. Understand my current navigation and file structure.
+4. Understand the Challenge Hub created in Task 5.
+5. Preserve all working functionality from Tasks 1–5.
+6. Do NOT create an unrelated website.
+7. Do NOT redesign the TechBridge brand from scratch.
+8. Do NOT unnecessarily rewrite working code.
+9. Do NOT break existing links, navigation, filters, modals or responsive behavior.
+
+Task 6 must look and behave like the natural next stage of the SAME TechBridge platform.
+
+====================================================
+OFFICIAL TASK 6
+====================================================
+
+TASK 6 — BUILD THE TECHBRIDGE INTERN DASHBOARD
+
+Estimated Time:
+4–6 hours
+
+Difficulty:
+Intermediate
+
+Technologies:
+HTML5
+CSS3
+JavaScript
+
+====================================================
+MAIN OBJECTIVE
+====================================================
+
+Build an Interactive Intern Dashboard for the TechBridge website.
+
+The dashboard should give an intern one clear place to:
+
+- See their internship progress
+- View all 8 internship tasks
+- See which tasks are completed
+- Track their current task
+- View their progress percentage
+- Explore modern web technologies
+- Access the Challenge Hub created in Task 5
+
+The final result should make the TechBridge website feel more like an actual internship platform rather than only a collection of webpages.
+
+====================================================
+IMPORTANT PROJECT RULE
+====================================================
+
+Continue the existing project.
+
+Do NOT start over.
+
+Add a new dashboard page such as:
+
+dashboard.html
+
+Prefer a structure such as:
+
+TechBridge/
+│
+├── index.html
+├── programs.html
+├── internship-tasks.html
+├── challenges.html
+├── dashboard.html
+├── style.css
+├── script.js
+├── challenges.js
+├── dashboard.js
+└── images/
+    └── techbridge-logo.png
+
+If my existing project already has folders such as:
+
+css/
+js/
+assets/
+
+preserve that organization instead of forcing the structure above.
+
+The main requirement is that HTML, CSS, JavaScript and assets remain properly separated.
+
+====================================================
+NO FRAMEWORKS
+====================================================
+
+For Task 6 use:
+
+HTML5
+CSS3
+Vanilla JavaScript
+
+Do NOT build the dashboard with:
+
+React
+Next.js
+Vue
+Angular
+Tailwind
+Bootstrap
+
+IMPORTANT:
+
+Next.js, Vue.js and Angular must be EXPLAINED in the Technology Explorer.
+
+They are NOT supposed to be used to build Task 6.
+
+This task is about practicing JavaScript fundamentals.
+
+====================================================
+DESIGN DIRECTION
+====================================================
+
+The public pages from Tasks 1–5 have a premium TechBridge visual identity.
+
+Task 6 should keep that identity but evolve into a REAL DASHBOARD / APPLICATION EXPERIENCE.
+
+It should feel like:
+
+A modern internship SaaS dashboard
++
+TechBridge's existing EdTech branding
+
+Design qualities:
+
+Professional
+Premium
+Modern
+Clean
+Structured
+Interactive
+Application-like
+Responsive
+Accessible
+Visually impressive
+
+Do NOT make it look like:
+
+a generic admin template
+a completely different website
+an overly colorful crypto dashboard
+a beginner school assignment
+
+====================================================
+TECHBRIDGE BRAND
+====================================================
+
+Study the existing uploaded project and reuse its actual design system.
+
+Approximate TechBridge colors if needed:
+
+TechBridge Green:
+#39B80A
+
+Deep Navy:
+#0D004D
+
+Supporting colors:
+
+#FFFFFF
+#F7F9FC
+#F1FAED
+#F0EFF8
+#101828
+#475467
+
+If my existing CSS already defines brand variables:
+
+REUSE THEM.
+
+Do not create conflicting design variables.
+
+====================================================
+DASHBOARD LAYOUT
+====================================================
+
+Create a sophisticated responsive dashboard.
+
+Recommended desktop structure:
+
+----------------------------------------
+LEFT SIDEBAR
+----------------------------------------
+
+TechBridge logo
+
+Dashboard
+My Tasks
+Progress
+Challenges
+Technology Explorer
+
+Optional compact user/profile area
+
+----------------------------------------
+MAIN CONTENT
+----------------------------------------
+
+Welcome section
+
+Progress overview cards
+
+Overall progress component
+
+Current task
+
+Task tracker
+
+Challenge Hub preview
+
+Modern Web Technologies / Technology Explorer
+
+----------------------------------------
+
+On tablet/mobile:
+
+Convert the sidebar into a clean mobile-friendly navigation experience.
+
+Do NOT allow the sidebar to consume most of the phone screen.
+
+The dashboard should remain extremely usable at 375px width.
+
+====================================================
+SITE NAVIGATION
+====================================================
+
+The dashboard must remain connected to my existing website.
+
+Preserve links to important existing pages such as:
+
+Home
+Programs
+Internship Tasks / Roadmap
+Challenges
+Dashboard
+
+Do not break:
+
+index.html
+programs.html
+internship-tasks.html
+challenges.html
+
+If my actual filenames differ, inspect and use the correct existing names.
+
+Do NOT invent file names if the uploaded project already establishes them.
+
+====================================================
+1. WELCOME SECTION
+====================================================
+
+At the top of the dashboard create an elegant welcome area.
+
+It should display:
+
+Intern name
+Internship track
+Short welcome message
+Current internship status
+
+The official brief allows a SAMPLE intern name.
+
+Do not falsely present a real person unless supplied.
+
+Use editable JavaScript constants such as:
+
+const internProfile = {
+  name: "Alex",
+  track: "Web Development",
+  status: "In Progress"
+};
+
+IMPORTANT:
+
+Add a clear developer comment:
+
+// SAMPLE INTERN DATA — replace when real user/profile functionality is introduced.
+
+Display something such as:
+
+Welcome back, Alex
+
+Web Development Intern
+
+Internship Status:
+In Progress
+
+Make this visually strong without taking too much vertical space.
+
+Possible elements:
+
+initial avatar
+status badge
+track badge
+welcome copy
+current day/task indicator
+
+Do not invent official TechBridge employee or intern records.
+
+====================================================
+2. DASHBOARD SUMMARY CARDS
+====================================================
+
+Create a row of premium summary cards.
+
+Required information:
+
+Total Tasks
+Tasks Completed
+Tasks Remaining
+Overall Progress
+
+Example visual structure:
+
+TOTAL TASKS
+8
+
+COMPLETED
+3
+
+REMAINING
+5
+
+PROGRESS
+37.5%
+
+IMPORTANT:
+
+The completed, remaining and percentage values MUST be calculated dynamically from JavaScript task data.
+
+Do not hard-code changing statistics into the HTML.
+
+====================================================
+3. INTERNSHIP PROGRESS
+====================================================
+
+Create a visually impressive internship progress section.
+
+Required:
+
+Total tasks:
+8
+
+Tasks completed
+
+Tasks remaining
+
+Overall progress percentage
+
+Visual progress bar
+
+The progress bar must change dynamically when tasks are completed.
+
+Formula:
+
+completed / totalTasks * 100
+
+Examples:
+
+3 / 8 = 37.5%
+
+4 / 8 = 50%
+
+6 / 8 = 75%
+
+8 / 8 = 100%
+
+Handle percentage display cleanly.
+
+If the percentage is a whole number, display:
+
+50%
+
+rather than:
+
+50.0%
+
+If needed.
+
+====================================================
+PROGRESS BAR DESIGN
+====================================================
+
+Create a premium progress component.
+
+Possible visual:
+
+[████████████░░░░░░] 62.5%
+
+or a modern CSS progress track.
+
+Use:
+
+smooth width transition
+TechBridge green fill
+deep navy supporting text
+small progress marker
+subtle glow
+
+Do not make it overly flashy.
+
+====================================================
+4. TASK DATA
+====================================================
+
+IMPORTANT:
+
+Do NOT manually create all 8 task cards in HTML.
+
+Create a JavaScript data structure containing the internship tasks.
+
+Each task object should contain at least:
+
+id
+number
+title
+description
+status
+
+You may also include useful internal fields such as:
+
+day
+details
+url
+
+BUT:
+
+DO NOT INVENT official Task 1–8 titles or descriptions if they already exist in my uploaded Task 3 / Task 4 project.
+
+Reuse the official task information already present in the existing project.
+
+The latest project files are the source of truth for the actual internship task names/descriptions.
+
+Do not overwrite them with made-up titles.
+
+Suggested structure:
+
+const tasks = [
+  {
+    id: 1,
+    number: 1,
+    title: "...",
+    description: "...",
+    status: "completed"
+  }
+];
+
+Possible status values:
+
+completed
+in-progress
+not-started
+
+Use consistent internal status naming.
+
+====================================================
+5. TASK TRACKER
+====================================================
+
+Render all Tasks 1–8 dynamically using JavaScript.
+
+Every task should show:
+
+Task number
+Task title
+Short description
+Status
+Action button
+
+Use visually different status styles for:
+
+Completed
+In Progress
+Not Started
+
+Suggested status design:
+
+Completed:
+green check badge
+
+In Progress:
+prominent TechBridge navy/green badge
+
+Not Started:
+neutral grey badge
+
+IMPORTANT:
+
+Do not rely only on color.
+
+Always show the text label.
+
+====================================================
+CURRENT TASK
+====================================================
+
+Make the current task easy to identify.
+
+A task with:
+
+status = "in-progress"
+
+should receive stronger visual emphasis.
+
+Possible treatment:
+
+CURRENT TASK
+
+slightly larger card
+green/navy border
+subtle glow
+Continue Task button
+
+Do not make the other tasks hard to read.
+
+====================================================
+6. MARK TASK AS COMPLETED
+====================================================
+
+This is one of the MOST IMPORTANT requirements.
+
+For a task that is not completed, provide:
+
+Mark as Completed
+
+When clicked:
+
+1. Change that task's status to completed.
+2. Update the task card.
+3. Increase completed count.
+4. Decrease remaining count.
+5. Recalculate progress percentage.
+6. Update progress percentage display.
+7. Update progress bar width.
+8. Update summary cards.
+9. Update filtered results if necessary.
+10. Do all this WITHOUT refreshing the browser.
+
+Use JavaScript.
+
+====================================================
+STATUS PROGRESSION LOGIC
+====================================================
+
+After marking the current task completed, use sensible progression behavior.
+
+A good approach:
+
+- completed task becomes "Completed"
+- if another later task should become the next current task, mark the first non-completed task as "In Progress"
+- remaining later tasks stay "Not Started"
+
+Keep this logic simple and predictable.
+
+Do not allow multiple tasks to appear as the current task unless there is a good reason.
+
+====================================================
+7. LOCAL STORAGE
+====================================================
+
+This is optional in the brief, but INCLUDE IT after the required functionality works.
+
+Save task progress using:
+
+localStorage
+
+Goal:
+
+If an intern marks tasks complete and refreshes the browser, progress should remain.
+
+Use a clear storage key such as:
+
+techbridgeDashboardProgress
+
+or another sensible unique key.
+
+IMPORTANT:
+
+Stored data must not contain sensitive personal information.
+
+Save only simple task progress/status information.
+
+====================================================
+RESET PROGRESS
+====================================================
+
+Because Local Storage is included, provide a discreet:
+
+Reset Progress
+
+control.
+
+Do not place this next to the primary task-completion button.
+
+Put it somewhere appropriate such as dashboard settings/actions.
+
+When selected:
+
+Ask for confirmation using an accessible custom interaction or window.confirm.
+
+Then restore the sample/default progress state.
+
+====================================================
+8. TASK FILTERING
+====================================================
+
+Required filters:
+
+All
+Completed
+In Progress
+Not Started
+
+Use interactive buttons.
+
+When:
+
+Completed
+
+is selected:
+
+only completed tasks appear.
+
+When:
+
+In Progress
+
+is selected:
+
+only the current/in-progress task appears.
+
+When:
+
+Not Started
+
+is selected:
+
+only not-started tasks appear.
+
+When:
+
+All
+
+is selected:
+
+all 8 tasks appear.
+
+Filtering must happen without refreshing.
+
+====================================================
+FILTER STATE
+====================================================
+
+Use clear state such as:
+
+let activeTaskFilter = "all";
+
+or equivalent.
+
+Use one render function rather than duplicating task markup.
+
+====================================================
+9. TASK SEARCH
+====================================================
+
+This is optional in the brief.
+
+Include it for a stronger experience.
+
+Add:
+
+Search tasks...
+
+Users should be able to search by:
+
+task title
+description
+
+Search should work together with task status filtering.
+
+Do not refresh the page.
+
+====================================================
+TASK RESULTS COUNT
+====================================================
+
+Add a dynamic results indicator such as:
+
+8 Tasks
+
+3 Completed Tasks
+
+1 Task Found
+
+Keep singular/plural wording correct.
+
+====================================================
+NO RESULTS STATE
+====================================================
+
+If filtering/search produces zero tasks:
+
+Display a polished empty state.
+
+Example:
+
+No tasks match your current filter.
+
+Include:
+
+Clear Filters
+
+Do not leave a blank empty grid.
+
+====================================================
+10. VIEW TASK DETAILS
+====================================================
+
+Every task must have:
+
+View Task
+
+Clicking it must show more information WITHOUT leaving the dashboard.
+
+Use ONE reusable dynamic modal.
+
+Do NOT create eight individual modal elements.
+
+Populate the modal based on the selected JavaScript task object.
+
+====================================================
+TASK MODAL CONTENT
+====================================================
+
+Display available information from the existing task data such as:
+
+Task number
+Task title
+Description
+Status
+Day
+Additional task information where available
+
+Do NOT invent official requirements that are not present in existing task data.
+
+If there is a working relevant internal page or task URL already present, you may include:
+
+Open Related Experience
+
+or:
+
+Continue Task
+
+Otherwise do not invent external links.
+
+====================================================
+MODAL ACCESSIBILITY
+====================================================
+
+Use:
+
+role="dialog"
+aria-modal="true"
+
+Provide:
+
+visible close button
+Escape-key closing
+backdrop closing where appropriate
+keyboard focus handling
+return focus to originating button where reasonably possible
+
+The modal must work on mobile.
+
+====================================================
+11. CHALLENGE HUB CONNECTION
+====================================================
+
+Task 6 must connect to the Challenge Hub created in Task 5.
+
+Create a premium dashboard card/section such as:
+
+CHALLENGE HUB
+
+Practice Beyond Your Tasks
+
+Explore practical Data Analytics and Web Development challenges.
+
+[Explore Challenges]
+
+The button must link to the ACTUAL existing Challenge Hub page from my uploaded project.
+
+Most likely:
+
+challenges.html
+
+But inspect the project and use the actual filename.
+
+Do not invent a URL.
+
+====================================================
+CHALLENGE HUB PREVIEW
+====================================================
+
+You may show a compact preview.
+
+If my Task 5 implementation has:
+
+8 challenges
+
+show:
+
+8 Practical Challenges
+
+Do not show:
+
+6 Challenges Available
+
+if my actual Task 5 project contains eight.
+
+Reuse actual project information rather than blindly copying the example from the brief.
+
+====================================================
+12. MODERN WEB TECHNOLOGIES
+====================================================
+
+Create a section titled:
+
+Modern Web Technologies
+
+Introduce:
+
+Next.js
+Vue.js
+Angular
+Backend Development
+
+The purpose is educational.
+
+IMPORTANT:
+
+Do NOT pretend these technologies are used to build Task 6.
+
+Explain what they are and what developers commonly use them for.
+
+====================================================
+NEXT.JS CONTENT
+====================================================
+
+Create concise beginner-friendly content.
+
+Explain that Next.js is a React framework used for building modern web applications.
+
+Possible topics:
+
+routing
+server-side capabilities
+full-stack React applications
+performance features
+
+Keep it short.
+
+Do not turn the dashboard into a documentation website.
+
+====================================================
+VUE.JS CONTENT
+====================================================
+
+Explain briefly:
+
+Vue.js is a JavaScript framework for building user interfaces and web applications.
+
+Mention practical use such as:
+
+reactive interfaces
+component-based applications
+
+Keep it concise and accurate.
+
+====================================================
+ANGULAR CONTENT
+====================================================
+
+Explain briefly:
+
+Angular is a web application framework commonly used for structured, large-scale frontend applications.
+
+Keep it beginner friendly.
+
+====================================================
+BACKEND DEVELOPMENT CONTENT
+====================================================
+
+Explain:
+
+Backend development handles server-side application logic, data access, APIs, authentication and communication with frontend applications.
+
+Introduce AT LEAST THREE backend technologies.
+
+Use:
+
+Node.js
+Express.js
+Django
+
+You may also briefly mention:
+
+Flask
+Laravel
+.NET
+
+But do not overwhelm the user.
+
+IMPORTANT:
+
+The brief says a backend does NOT need to be built.
+
+This section is informational only.
+
+====================================================
+13. TECHNOLOGY EXPLORER
+====================================================
+
+Make the Modern Web Technologies section interactive.
+
+Create buttons/tabs:
+
+Next.js
+Vue.js
+Angular
+Backend
+
+When clicked:
+
+the information panel changes WITHOUT refreshing the page.
+
+Use JavaScript.
+
+Default to one technology such as:
+
+Next.js
+
+Clearly indicate the selected technology.
+
+====================================================
+TECHNOLOGY DATA
+====================================================
+
+Store technology information in a JavaScript data structure rather than manually duplicating panels.
+
+Example concept:
+
+const technologies = {
+  nextjs: {
+    name: "Next.js",
+    description: "...",
+    useCases: [...]
+  },
+  vue: {...},
+  angular: {...},
+  backend: {...}
+};
+
+Render the selected item dynamically.
+
+====================================================
+TECHNOLOGY EXPLORER DESIGN
+====================================================
+
+Create a visually impressive explorer.
+
+Possible layout:
+
+LEFT:
+technology selector buttons
+
+RIGHT:
+dynamic information panel
+
+On mobile:
+
+buttons/tabs at top
+information beneath
+
+Use:
+
+subtle code motifs
+framework initials
+small architectural illustrations
+clean icons
+
+Do not use trademarked logos incorrectly if no logo assets are available.
+
+Text labels are sufficient.
+
+====================================================
+14. CONTINUE TASK BUTTON
+====================================================
+
+This is optional in the brief.
+
+Include it for the current task.
+
+Example:
+
+Continue Current Task →
+
+If the current task has an existing relevant internal URL in the uploaded project, use it.
+
+Otherwise:
+
+make the control scroll to or open that task's detail modal.
+
+Do NOT invent an external task URL.
+
+====================================================
+15. COMPLETION TOAST
+====================================================
+
+Optional but recommended.
+
+When a task is marked completed:
+
+show a small temporary notification such as:
+
+Task completed successfully ✓
+
+or:
+
+Task 4 marked as completed.
+
+Use a lightweight toast.
+
+Automatically dismiss after a few seconds.
+
+Do not use browser alert() for normal completion feedback.
+
+====================================================
+16. COMPLETION ANIMATION
+====================================================
+
+When a task is completed:
+
+Use subtle effects such as:
+
+check icon transition
+border highlight
+small scale response
+progress bar animation
+
+Avoid excessive celebration for every task.
+
+====================================================
+17. ALL-TASKS COMPLETED CELEBRATION
+====================================================
+
+The brief allows a celebration when all 8 tasks are completed.
+
+Include a tasteful completion state.
+
+When:
+
+8 / 8 tasks completed
+
+Display something such as:
+
+Internship Tasks Complete 🎉
+
+You completed all 8 tasks in the dashboard.
+
+Keep it professional.
+
+Do NOT claim:
+
+certificate awarded
+graduation confirmed
+employment
+job placement
+official completion approval
+
+unless TechBridge explicitly supplies those facts.
+
+A task tracker reaching 100% is not the same thing as official program approval.
+
+====================================================
+18. DARK / LIGHT MODE
+====================================================
+
+This is optional.
+
+Only include it if it does NOT compromise the main functionality.
+
+The existing TechBridge site appears primarily light with deep navy dark sections.
+
+A dashboard dark mode can be a nice enhancement.
+
+If implemented:
+
+Use CSS variables.
+
+Save preference in localStorage.
+
+Respect:
+
+prefers-color-scheme
+
+where appropriate.
+
+Maintain TechBridge green + navy branding.
+
+Do not create a completely different color theme.
+
+====================================================
+19. PROFILE AREA
+====================================================
+
+Optional enhancement.
+
+Create a compact profile area showing:
+
+sample initials/avatar
+sample intern name
+track
+status
+
+Do not invent real profile data.
+
+Label sample intern information clearly in code.
+
+====================================================
+20. INTERNSHIP COUNTDOWN
+====================================================
+
+The brief lists a countdown as optional.
+
+Only implement this if it can be done WITHOUT inventing a real personal start date.
+
+Do NOT fabricate dates.
+
+If no reliable intern start date exists:
+
+DO NOT include a real countdown.
+
+It is better to omit this optional feature than display false information.
+
+====================================================
+WOW FACTOR / VISUAL DESIGN
+====================================================
+
+This should be one of the best-looking Task 6 submissions while staying usable.
+
+Use tasteful elements such as:
+
+premium dashboard cards
+soft TechBridge green glows
+deep navy feature areas
+glass-like sidebar/header accents
+subtle grid backgrounds
+progress ring or progress bar
+animated progress fill
+status pills
+task completion checkmarks
+clean iconography
+layered panels
+soft shadows
+thin borders
+micro-interactions
+hover elevation
+active navigation indicators
+subtle background data/code patterns
+strong typography
+excellent spacing
+responsive card layouts
+
+Do not make it visually noisy.
+
+====================================================
+DASHBOARD HERO / WELCOME VISUAL
+====================================================
+
+Instead of a traditional marketing hero, use an application-style dashboard header.
+
+Possible structure:
+
+WELCOME BACK, ALEX
+
+Continue your TechBridge journey.
+
+[Web Development]
+[In Progress]
+
+CURRENT PROGRESS
+37.5%
+
+[Continue Current Task]
+
+Add subtle decorative visual elements using CSS.
+
+====================================================
+SUMMARY CARDS
+====================================================
+
+Create cards such as:
+
+TOTAL TASKS
+8
+
+COMPLETED
+3
+
+REMAINING
+5
+
+CURRENT TASK
+Task 4
+
+Values must update dynamically.
+
+====================================================
+ANIMATIONS
+====================================================
+
+Use premium CSS animation.
+
+Recommended:
+
+dashboard content fade-up
+card entrance
+progress bar animation
+status transition
+modal fade
+toast slide/fade
+technology panel fade transition
+hover lift
+button arrow movement
+active filter animation
+
+Avoid:
+
+aggressive bouncing
+continuous spinning
+flashing
+large unnecessary motion
+
+Prefer:
+
+transform
+opacity
+
+====================================================
+PREFERS REDUCED MOTION
+====================================================
+
+Include:
+
+@media (prefers-reduced-motion: reduce)
+
+Disable or reduce non-essential animations.
+
+====================================================
+RESPONSIVE DESIGN
+====================================================
+
+Task 6 MUST work on:
+
+Desktop
+Tablet
+Mobile
+
+Test approximately:
+
+1440px
+1200px
+1024px
+768px
+480px
+375px
+
+DESKTOP:
+
+Dashboard sidebar + main content
+
+TABLET:
+
+Compact/collapsible dashboard navigation
+
+MOBILE:
+
+Single-column dashboard
+
+summary cards stack or become compact grid
+
+task cards become one column
+
+progress remains readable
+
+filters wrap cleanly
+
+technology explorer becomes stacked
+
+modal fits screen
+
+No horizontal overflow.
+
+====================================================
+MOBILE NAVIGATION
+====================================================
+
+Do not allow a permanent 250px sidebar to ruin mobile usability.
+
+Use an accessible responsive solution.
+
+Possible approach:
+
+compact top dashboard nav
+or
+toggleable sidebar
+
+If you implement a toggle:
+
+Use vanilla JavaScript.
+
+Make keyboard and touch interaction work.
+
+====================================================
+ACCESSIBILITY
+====================================================
+
+Use:
+
+semantic HTML5
+logical headings
+real buttons
+visible focus states
+sufficient contrast
+keyboard-friendly modal
+keyboard-friendly filters
+accessible status text
+aria attributes where useful
+reduced-motion support
+large touch targets
+
+Do not rely solely on:
+
+green = complete
+grey = incomplete
+
+Always include textual status.
+
+====================================================
+JAVASCRIPT ARCHITECTURE
+====================================================
+
+Organize dashboard.js clearly.
+
+Recommended sections:
+
+1. SAMPLE INTERN PROFILE DATA
+2. TASK DATA
+3. TECHNOLOGY DATA
+4. APPLICATION STATE
+5. DOM REFERENCES
+6. LOCAL STORAGE
+7. PROGRESS CALCULATIONS
+8. TASK RENDERING
+9. TASK FILTERING / SEARCH
+10. TASK COMPLETION
+11. TASK MODAL
+12. TECHNOLOGY EXPLORER
+13. TOAST / UI FEEDBACK
+14. INITIALIZATION
+
+Use clear functions.
+
+Possible function names:
+
+renderTasks()
+
+calculateProgress()
+
+updateProgressUI()
+
+markTaskComplete()
+
+setTaskFilter()
+
+openTaskModal()
+
+closeTaskModal()
+
+renderTechnology()
+
+saveProgress()
+
+loadProgress()
+
+resetProgress()
+
+showToast()
+
+Do not place the entire application inside one huge function.
+
+====================================================
+STATE MANAGEMENT
+====================================================
+
+Use simple vanilla JavaScript state.
+
+Possible:
+
+let tasks = [...]
+let activeFilter = "all";
+let searchTerm = "";
+let selectedTechnology = "nextjs";
+
+Keep the approach understandable for an intermediate internship project.
+
+====================================================
+LOCAL STORAGE SAFETY
+====================================================
+
+Do not store:
+
+passwords
+private credentials
+tokens
+email authentication
+sensitive personal data
+
+Only store simple interface preferences and task progress.
+
+====================================================
+HTML QUALITY
+====================================================
+
+Use semantic structure such as:
+
+<header>
+<nav>
+<aside>
+<main>
+<section>
+<article>
+<footer>
+
+Use meaningful IDs such as:
+
+#dashboard
+#welcome
+#progress
+#task-tracker
+#challenge-hub
+#technology-explorer
+
+====================================================
+CSS QUALITY
+====================================================
+
+Reuse existing project styles where appropriate.
+
+Do not unnecessarily duplicate components.
+
+If continuing one stylesheet, add:
+
+/* =========================================
+   TASK 6 — INTERN DASHBOARD
+   ========================================= */
+
+If the existing project architecture supports separate stylesheets cleanly, a dashboard stylesheet is acceptable.
+
+Do not disrupt existing pages.
+
+Use:
+
+CSS Grid
+Flexbox
+clamp()
+minmax()
+media queries
+custom properties
+transitions
+keyframes
+
+Avoid:
+
+excessive !important
+large inline style blocks
+fixed-width layouts
+duplicated CSS
+
+====================================================
+EXTERNAL LINKS
+====================================================
+
+Preserve all verified TechBridge links already present in my project.
+
+Do NOT invent:
+
+application URLs
+community links
+social media accounts
+phone numbers
+addresses
+
+For any external link that is required but missing:
+
+use a searchable placeholder.
+
+Example:
+
+TECHBRIDGE_APPLICATION_URL
+
+Add a developer comment immediately nearby.
+
+Do not create fake links.
+
+====================================================
+CHALLENGE HUB LINK
+====================================================
+
+This is NOT an external placeholder if Task 5 already created a local page.
+
+Inspect the project and link the dashboard to the actual existing Challenge Hub page.
+
+Most likely:
+
+challenges.html
+
+but verify from uploaded files.
+
+====================================================
+TECHNOLOGY "LEARN MORE" LINKS
+====================================================
+
+The Task 6 brief shows "Learn More" as an example.
+
+You do NOT need to invent external URLs.
+
+If you want to include Learn More:
+
+Either:
+
+- omit the link until verified
+
+OR
+
+use an obvious placeholder such as:
+
+NEXTJS_LEARN_MORE_URL
+VUE_LEARN_MORE_URL
+ANGULAR_LEARN_MORE_URL
+BACKEND_LEARN_MORE_URL
+
+But preferably keep the Technology Explorer self-contained unless I supply official external links.
+
+====================================================
+FUNCTIONAL TEST 1 — INITIAL LOAD
+====================================================
+
+On first load confirm:
+
+Dashboard displays.
+
+Sample intern information appears.
+
+All 8 tasks are loaded from JavaScript.
+
+Progress statistics are correct.
+
+Current task is visually identifiable.
+
+Task status styling works.
+
+Challenge Hub button works.
+
+Technology Explorer displays one technology by default.
+
+No JavaScript errors.
+
+====================================================
+FUNCTIONAL TEST 2 — COMPLETE TASK
+====================================================
+
+Click:
+
+Mark as Completed
+
+Confirm:
+
+Task becomes Completed.
+
+Completed count increases.
+
+Remaining count decreases.
+
+Progress percentage recalculates.
+
+Progress bar changes.
+
+Summary cards update.
+
+Current task advances sensibly.
+
+No browser refresh occurs.
+
+Local Storage saves state.
+
+====================================================
+FUNCTIONAL TEST 3 — REFRESH
+====================================================
+
+After completing tasks:
+
+Refresh the page.
+
+Confirm:
+
+completed task statuses remain.
+
+progress remains.
+
+current task remains correct.
+
+No data corruption.
+
+====================================================
+FUNCTIONAL TEST 4 — FILTERS
+====================================================
+
+Test:
+
+All
+Completed
+In Progress
+Not Started
+
+Confirm each filter displays only correct tasks.
+
+Test filters after marking more tasks complete.
+
+====================================================
+FUNCTIONAL TEST 5 — SEARCH
+====================================================
+
+Search for a task title.
+
+Search part of a description.
+
+Combine search with:
+
+Completed
+
+or:
+
+Not Started
+
+Confirm correct results.
+
+====================================================
+FUNCTIONAL TEST 6 — VIEW TASK
+====================================================
+
+Click View Task on every task.
+
+Confirm:
+
+correct task information appears.
+
+modal opens.
+
+modal closes.
+
+Escape works.
+
+no page refresh.
+
+====================================================
+FUNCTIONAL TEST 7 — CHALLENGE HUB
+====================================================
+
+Click:
+
+Explore Challenges
+
+Confirm it opens the actual Task 5 Challenge Hub.
+
+====================================================
+FUNCTIONAL TEST 8 — TECHNOLOGY EXPLORER
+====================================================
+
+Click repeatedly:
+
+Next.js
+Vue.js
+Angular
+Backend
+Next.js
+
+Confirm:
+
+information changes correctly.
+
+selected button state updates.
+
+browser does not refresh.
+
+====================================================
+FUNCTIONAL TEST 9 — RESET
+====================================================
+
+After completing tasks:
+
+click Reset Progress.
+
+Confirm user is warned/asked to confirm.
+
+Confirm default sample progress state returns.
+
+Confirm Local Storage updates.
+
+====================================================
+FUNCTIONAL TEST 10 — 100% COMPLETION
+====================================================
+
+Complete all eight tasks.
+
+Confirm:
+
+8 / 8
+
+0 remaining
+
+100%
+
+full progress bar
+
+appropriate tasteful completion message
+
+No unsupported certification/job claims.
+
+====================================================
+RESPONSIVE TEST
+====================================================
+
+Test:
+
+Desktop
+Tablet
+Mobile
+
+Confirm:
+
+navigation usable
+sidebar responsive
+summary cards fit
+task cards readable
+filters usable
+progress component readable
+buttons usable
+modal usable
+technology explorer usable
+Challenge Hub card usable
+no horizontal scrolling
+
+====================================================
+CONTENT SAFETY
+====================================================
+
+Do NOT invent:
+
+real intern profiles
+TechBridge employee names
+job placement claims
+certificates
+awards
+intern salaries
+partners
+success rates
+official technologies beyond what is supported
+external links
+official dates
+countdown dates
+
+Sample dashboard data is allowed by the brief.
+
+Make its sample nature clear in code.
+
+====================================================
+IMPORTANT SOURCE-OF-TRUTH RULE
+====================================================
+
+For the 8 internship tasks:
+
+Use the actual official task titles and descriptions already present in my uploaded Tasks 3 / 4 project.
+
+Do NOT replace them with generic invented tasks.
+
+For Task 5:
+
+Connect to my existing Challenge Hub.
+
+For Task 6:
+
+Follow the requirements in THIS prompt.
+
+====================================================
+FINAL QUALITY REVIEW
+====================================================
+
+Before finishing, review the project from the perspective of:
+
+1. Senior frontend developer
+2. UI/UX designer
+3. JavaScript mentor
+4. Internship evaluator
+5. Accessibility reviewer
+
+Confirm:
+
+Dashboard page works.
+
+All 8 tasks appear.
+
+Task data is generated from JavaScript.
+
+Statuses work.
+
+Mark as Completed works.
+
+Completed count updates.
+
+Remaining count updates.
+
+Percentage updates.
+
+Progress bar updates.
+
+Task filters work.
+
+Task search works.
+
+View Task works.
+
+Challenge Hub connection works.
+
+Technology Explorer works.
+
+Next.js is explained.
+
+Vue.js is explained.
+
+Angular is explained.
+
+Backend Development is explained.
+
+At least 3 backend technologies are introduced.
+
+JavaScript updates content without refresh.
+
+Local Storage works.
+
+Responsive design works.
+
+Design matches Tasks 1–5.
+
+No major console errors.
+
+No invented external links.
+
+====================================================
+FINAL OUTPUT
+====================================================
+
+DO NOT simply explain what you would build.
+
+BUILD THE COMPLETE TASK 6 IMPLEMENTATION.
+
+You should:
+
+1. Inspect my existing Task 1–5 project first.
+2. Preserve all working existing functionality.
+3. Create dashboard.html.
+4. Create dashboard.js or equivalent clean Task 6 JS file.
+5. Add dashboard styling while preserving TechBridge branding.
+6. Use the official existing 8-task data.
+7. Generate task cards dynamically.
+8. Add statuses.
+9. Add Mark as Completed.
+10. Dynamically calculate progress.
+11. Dynamically update summary cards.
+12. Add dynamic progress bar.
+13. Add All / Completed / In Progress / Not Started filters.
+14. Add task search.
+15. Add task details modal.
+16. Connect Challenge Hub.
+17. Add Modern Web Technologies.
+18. Add interactive Technology Explorer.
+19. Explain Next.js, Vue.js, Angular and Backend Development.
+20. Introduce at least Node.js, Express.js and Django as backend technologies.
+21. Add Local Storage task persistence.
+22. Add Reset Progress.
+23. Add completion toast.
+24. Add tasteful completion animation.
+25. Add 100% completion state.
+26. Add responsive dashboard navigation.
+27. Make desktop/tablet/mobile excellent.
+28. Test everything carefully.
+29. Do not invent missing external links.
+30. Do not break Tasks 1–5.
+
+Do NOT provide partial code.
+
+Do NOT write:
+
+"...remaining code"
+
+"...same as above"
+
+"...rest of styles"
+
+All functionality must be completely implemented.
+
+After completing the build, give me ONLY a concise report with:
+
+1. Files created or modified
+2. How task data is stored
+3. How task completion works
+4. How progress is calculated
+5. How Local Storage works
+6. How task filtering works
+7. How task details work
+8. How the Challenge Hub is connected
+9. How the Technology Explorer works
+10. Optional features added
+11. Any external links/placeholders I still need to replace
+12. Any issue found in my existing Tasks 1–5 project
