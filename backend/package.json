@@ -1,0 +1,23 @@
+{
+  "name": "techbridge-task-management-api",
+  "version": "1.0.0",
+  "description": "TechBridge Web Development Internship Task 7 - Full-Stack Task Management REST API with Express and JSON File Persistence",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "techbridge",
+    "task-management",
+    "express",
+    "rest-api",
+    "internship"
+  ],
+  "author": "TechBridge Intern",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

@@ -1,0 +1,171 @@
+[
+  {
+    "id": 1,
+    "order": 1,
+    "title": "TechBridge Landing Page",
+    "description": "Create the first version of the TechBridge website using HTML5 and CSS3 with responsive layouts and brand styling.",
+    "status": "completed",
+    "day": "Day 1",
+    "stage": "Stage 01 • Foundation",
+    "milestone": "Foundation Milestone",
+    "relatedUrl": "index.html",
+    "urlLabel": "View Live Homepage",
+    "skills": [
+      "Semantic HTML5",
+      "CSS3 Layouts",
+      "Brand Styling",
+      "Mobile Responsiveness"
+    ],
+    "deliverable": "Complete responsive homepage with navigation, hero section, and curriculum previews.",
+    "createdAt": "2026-10-01T09:00:00.000Z",
+    "updatedAt": "2026-10-03T16:30:00.000Z"
+  },
+  {
+    "id": 2,
+    "order": 2,
+    "title": "Internship Tracks Experience",
+    "description": "Create a Programs experience presenting TechBridge available learning tracks in Web Development and Data Analytics.",
+    "status": "completed",
+    "day": "Day 4",
+    "stage": "Stage 01 • Foundation",
+    "milestone": "Curriculum Presentation",
+    "relatedUrl": "programs.html",
+    "urlLabel": "View Programs Experience",
+    "skills": [
+      "Curriculum Architecture",
+      "Card Component Systems",
+      "Dual-Track Layouts",
+      "CSS Interactions"
+    ],
+    "deliverable": "Dedicated programs page showcasing Web Development and Data Analytics learning tracks.",
+    "createdAt": "2026-10-04T09:00:00.000Z",
+    "updatedAt": "2026-10-07T17:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "order": 3,
+    "title": "Internship Tasks Roadmap",
+    "description": "Create an interactive interface presenting the TechBridge 30-day internship roadmap and milestone trajectory.",
+    "status": "completed",
+    "day": "Day 8",
+    "stage": "Stage 02 • Progression",
+    "milestone": "Roadmap Architecture",
+    "relatedUrl": "internship-tasks.html",
+    "urlLabel": "View Tasks Roadmap",
+    "skills": [
+      "Timeline Visualization",
+      "Phase Modeling",
+      "Process Architecture",
+      "Content Hierarchy"
+    ],
+    "deliverable": "Visual 30-day chronological timeline displaying the full 8-milestone trajectory.",
+    "createdAt": "2026-10-08T09:00:00.000Z",
+    "updatedAt": "2026-10-10T15:20:00.000Z"
+  },
+  {
+    "id": 4,
+    "order": 4,
+    "title": "Interactive Task Tracker",
+    "description": "Use JavaScript to make the internship task experience interactive and enable dynamic filtering and progress tracking.",
+    "status": "completed",
+    "day": "Day 11",
+    "stage": "Stage 02 • Progression",
+    "milestone": "Dynamic State",
+    "relatedUrl": "internship-tasks.html",
+    "urlLabel": "View Task Tracker",
+    "skills": [
+      "DOM Manipulation",
+      "Event Handling",
+      "State Management",
+      "Data Filtering"
+    ],
+    "deliverable": "Dynamic client-side interactivity enabling seamless filtering and status updates.",
+    "createdAt": "2026-10-11T09:00:00.000Z",
+    "updatedAt": "2026-10-14T18:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "order": 5,
+    "title": "Challenge Hub Experience",
+    "description": "Create a hands-on Challenge Hub featuring real-world technical challenges, track tagging, and modal previews.",
+    "status": "completed",
+    "day": "Day 15",
+    "stage": "Stage 03 • Application & Submission",
+    "milestone": "Challenge Repository",
+    "relatedUrl": "challenges.html",
+    "urlLabel": "Explore Challenge Hub",
+    "skills": [
+      "Filter Pipelines",
+      "Search Optimization",
+      "Modal Windows",
+      "Accessibility"
+    ],
+    "deliverable": "10 interactive challenge cards with search, filtering, and detailed specification modal.",
+    "createdAt": "2026-10-15T09:00:00.000Z",
+    "updatedAt": "2026-10-18T16:45:00.000Z"
+  },
+  {
+    "id": 6,
+    "order": 6,
+    "title": "Interactive Intern Dashboard",
+    "description": "Build an intern dashboard unifying task metrics, progress milestones, task tracking, and modern technology explorations.",
+    "status": "completed",
+    "day": "Day 19",
+    "stage": "Stage 03 • Application & Submission",
+    "milestone": "Dashboard Architecture",
+    "relatedUrl": "dashboard.html",
+    "urlLabel": "Current Dashboard",
+    "skills": [
+      "SaaS Dashboard Design",
+      "KPI Metric Aggregation",
+      "Responsive Navigation",
+      "Theme System"
+    ],
+    "deliverable": "Interactive dashboard with KPI metrics, progress visualization, search & filters, and dark mode.",
+    "createdAt": "2026-10-19T09:00:00.000Z",
+    "updatedAt": "2026-10-21T14:10:00.000Z"
+  },
+  {
+    "id": 7,
+    "order": 7,
+    "title": "Task Management API",
+    "description": "Build a professional Node.js and Express REST API to power the Intern Dashboard with full CRUD persistence.",
+    "status": "in_progress",
+    "day": "Day 22",
+    "stage": "Stage 04 • Platform Integration",
+    "milestone": "Full-Stack API Integration",
+    "relatedUrl": "dashboard.html",
+    "urlLabel": "Live API Dashboard",
+    "skills": [
+      "Node.js",
+      "Express.js",
+      "RESTful Architecture",
+      "JSON File Persistence",
+      "HTTP Status Codes"
+    ],
+    "deliverable": "Working Express API with GET, PUT, POST endpoints connected to tasks.json and frontend fetch().",
+    "createdAt": "2026-10-22T09:00:00.000Z",
+    "updatedAt": "2026-10-26T09:30:00.000Z"
+  },
+  {
+    "id": 8,
+    "order": 8,
+    "title": "Complete Platform Integration",
+    "description": "Combine the homepage, programs, tasks, challenges, and dashboard into a production-grade full-stack learning platform.",
+    "status": "not_started",
+    "day": "Day 26",
+    "stage": "Stage 04 • Platform Integration",
+    "milestone": "Platform Finale",
+    "relatedUrl": "index.html",
+    "urlLabel": "TechBridge Home",
+    "skills": [
+      "System Integration",
+      "Cross-Page Navigation",
+      "Production Polish",
+      "Deployment Readiness"
+    ],
+    "deliverable": "Unified multi-page platform integrating homepage, programs, tasks, challenges, and dashboard.",
+    "createdAt": "2026-10-26T10:00:00.000Z",
+    "updatedAt": "2026-10-26T10:00:00.000Z"
+  }
+]

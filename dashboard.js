@@ -1,153 +1,35 @@
 /**
- * TechBridge Intern Dashboard — Task 6
- * Vanilla JavaScript (HTML5 + CSS3 + ES6+)
+ * TECHBRIDGE INTERN DASHBOARD — TASK 7
+ * Full-Stack Task Management API & Frontend Integration
  * 
  * Features:
- * - Dynamic task progress tracking & KPI calculations
- * - Interactive task completion & automatic current-task progression
- * - LocalStorage persistence with reset progress capability
- * - Combined status filtering & real-time search
- * - Accessible single-instance task details modal
- * - Interactive Modern Web Technologies Explorer (Next.js, Vue.js, Angular, Backend)
- * - Seamless integration with Challenge Hub (Task 5) and public pages (Tasks 1-4)
- * - Toast feedback & all-tasks celebration state
- * - Optional Dark / Light theme toggle stored in LocalStorage
+ * - Real-time communication with Node.js & Express REST API (/api/tasks, /api/health)
+ * - Dynamic task loading with animated spinner and error recovery
+ * - Live Backend Connection Status Indicator (Connected / Offline)
+ * - Single-task fetching via GET /api/tasks/:id in accessible modal
+ * - Persistent status updates via PUT /api/tasks/:id with tasks.json server persistence
+ * - Client-side status filtering (All, Completed, In Progress, Not Started)
+ * - Real-time title & description search
+ * - Dynamic KPI statistics & progress continuum recalculation
+ * - Theme switcher (Dark / Light mode) with WCAG AAA contrast harmony
+ * - API documentation modal
  */
 
 // ==========================================================================
-// 1. SAMPLE INTERN PROFILE DATA
+// 1. CONSTANTS & APPLICATION STATE
 // ==========================================================================
-// SAMPLE INTERN DATA — replace when real user/profile functionality is introduced.
-const internProfile = {
-  name: "Alex",
-  track: "Web Development",
-  status: "In Progress",
-  cohort: "2026 Batch A",
-  startDate: "Day 1",
-  avatarInitials: "AL"
-};
+const API_BASE_URL = window.location.origin;
+const THEME_STORAGE_KEY = "techbridgeDashboardTheme";
 
-// ==========================================================================
-// 2. OFFICIAL INTERNSHIP TASK DATA (SOURCE OF TRUTH FROM TASKS 3 & 4)
-// ==========================================================================
-const initialTasks = [
-  {
-    id: 1,
-    number: 1,
-    title: "Build the TechBridge Homepage",
-    description: "Create the first version of the TechBridge website using HTML and CSS.",
-    day: "Day 1",
-    stage: "Stage 01 • Foundation",
-    milestone: "Foundation Milestone",
-    status: "completed",
-    relatedUrl: "index.html",
-    urlLabel: "View Live Homepage",
-    skills: ["Semantic HTML5", "CSS3 Layouts", "Brand Styling", "Mobile Responsiveness"],
-    deliverable: "Complete responsive homepage with navigation, hero section, and curriculum previews."
-  },
-  {
-    id: 2,
-    number: 2,
-    title: "Build the TechBridge Programs Experience",
-    description: "Create a Programs experience that presents TechBridge's available learning programs.",
-    day: "Day 4",
-    stage: "Stage 01 • Foundation",
-    milestone: "Curriculum Presentation",
-    status: "completed",
-    relatedUrl: "programs.html",
-    urlLabel: "View Programs Experience",
-    skills: ["Curriculum Architecture", "Card Component Systems", "Dual-Track Layouts", "CSS Interactions"],
-    deliverable: "Dedicated programs page showcasing Web Development and Data Analytics learning tracks."
-  },
-  {
-    id: 3,
-    number: 3,
-    title: "Build the Internship Tasks Experience",
-    description: "Create an interface that presents the TechBridge internship tasks and helps users understand the internship journey.",
-    day: "Day 8",
-    stage: "Stage 02 • Progression",
-    milestone: "Roadmap Architecture",
-    status: "completed",
-    relatedUrl: "internship-tasks.html",
-    urlLabel: "View Tasks Roadmap",
-    skills: ["Timeline Visualization", "Phase Modeling", "Process Architecture", "Content Hierarchy"],
-    deliverable: "Visual 30-day chronological timeline displaying the full 8-milestone trajectory."
-  },
-  {
-    id: 4,
-    number: 4,
-    title: "Build an Interactive Task Tracker",
-    description: "Use JavaScript to make the internship task experience interactive and allow progress to be tracked.",
-    day: "Day 11",
-    stage: "Stage 02 • Progression",
-    milestone: "Dynamic State",
-    status: "in-progress",
-    relatedUrl: "internship-tasks.html",
-    urlLabel: "View Roadmap",
-    skills: ["DOM Manipulation", "Event Handling", "State Management", "Data Filtering"],
-    deliverable: "Dynamic client-side interactivity enabling seamless filtering and status updates."
-  },
-  {
-    id: 5,
-    number: 5,
-    title: "Build the Intern Registration Experience",
-    description: "Create a professional registration/onboarding interface for TechBridge interns.",
-    day: "Day 15",
-    stage: "Stage 03 • Application & Submission",
-    milestone: "Onboarding & Workflow",
-    status: "not-started",
-    relatedUrl: "challenges.html",
-    urlLabel: "Explore Challenge Hub",
-    skills: ["Form Validation", "UX Micro-interactions", "Accessible Inputs", "Client Validation"],
-    deliverable: "User registration workflow with validation feedback and onboarding steps."
-  },
-  {
-    id: 6,
-    number: 6,
-    title: "Build the Task Submission System",
-    description: "Create an interface through which interns can prepare and submit their task work.",
-    day: "Day 19",
-    stage: "Stage 03 • Application & Submission",
-    milestone: "Submission Engine",
-    status: "not-started",
-    relatedUrl: "",
-    urlLabel: "",
-    skills: ["Submission Handling", "File/Link Formatting", "Submission History", "UI Confirmation"],
-    deliverable: "Project submission interface allowing interns to submit GitHub and live site links."
-  },
-  {
-    id: 7,
-    number: 7,
-    title: "Build the Intern Dashboard",
-    description: "Create a dashboard where an intern can view their profile, progress, tasks, and submissions.",
-    day: "Day 22",
-    stage: "Stage 04 • Platform Integration",
-    milestone: "Platform Integration",
-    status: "not-started",
-    relatedUrl: "dashboard.html",
-    urlLabel: "Current Dashboard",
-    skills: ["SaaS Architecture", "Component Modeling", "LocalStorage Storage", "Performance Optimization"],
-    deliverable: "Comprehensive dashboard unifying progress, tasks, stats, and technology insights."
-  },
-  {
-    id: 8,
-    number: 8,
-    title: "Build the Complete TechBridge Internship Platform",
-    description: "Combine the different components created during the internship into a complete TechBridge platform.",
-    day: "Day 26",
-    stage: "Stage 04 • Platform Integration",
-    milestone: "Platform Finale",
-    status: "not-started",
-    relatedUrl: "index.html",
-    urlLabel: "TechBridge Home",
-    skills: ["System Integration", "Cross-Page Navigation", "Production Polish", "Deployment Readiness"],
-    deliverable: "Unified multi-page platform integrating homepage, programs, tasks, challenges, and dashboard."
-  }
-];
+let tasks = [];
+let activeTaskFilter = "all";
+let taskSearchQuery = "";
+let activeTechnology = "nextjs";
+let focusedTriggerElement = null;
+let isBackendConnected = false;
+let isFetchingTasks = false;
 
-// ==========================================================================
-// 3. MODERN WEB TECHNOLOGIES DATA (EDUCATIONAL EXPLORER)
-// ==========================================================================
+// Educational Modern Web Technologies Explorer Data (Preserved from Task 6)
 const technologyData = {
   nextjs: {
     name: "Next.js",
@@ -162,7 +44,7 @@ const technologyData = {
       },
       {
         title: "File-System Based Routing",
-        desc: "Organizes routes automatically through directory structure (e.g., app router or pages router) without complex router configurations."
+        desc: "Organizes routes automatically through directory structure without complex router configurations."
       },
       {
         title: "Built-In Optimization",
@@ -178,7 +60,7 @@ const technologyData = {
       "Content-heavy publication platforms and marketing sites.",
       "SaaS dashboards requiring authenticated server-side data fetching."
     ],
-    note: "Educational information only. Task 6 is built using HTML5, CSS3, and Vanilla JavaScript."
+    note: "Educational technology reference. TechBridge Task 7 uses Vanilla JavaScript and Express."
   },
 
   vue: {
@@ -210,7 +92,7 @@ const technologyData = {
       "Interactive data dashboards and customer-facing web tools.",
       "Gradual modernization of legacy server-rendered web applications."
     ],
-    note: "Educational information only. Task 6 is built using HTML5, CSS3, and Vanilla JavaScript."
+    note: "Educational technology reference. TechBridge Task 7 uses Vanilla JavaScript and Express."
   },
 
   angular: {
@@ -242,307 +124,502 @@ const technologyData = {
       "Complex multi-role organizational portals with large engineering teams.",
       "Internal administrative systems requiring strict coding conventions."
     ],
-    note: "Educational information only. Task 6 is built using HTML5, CSS3, and Vanilla JavaScript."
+    note: "Educational technology reference. TechBridge Task 7 uses Vanilla JavaScript and Express."
   },
 
   backend: {
-    name: "Backend Development",
-    category: "Server-Side Architecture & APIs",
-    tagline: "The engine that powers data storage, authentication, business logic, and APIs.",
-    badge: "Server & Database",
-    overview: "Backend development powers the server-side logic behind modern web applications. It handles database communication, authentication, security, business workflows, and API endpoints consumed by client-side frontend applications.",
+    name: "Node.js & Express REST API",
+    category: "Server-Side Architecture & REST APIs",
+    tagline: "The engine that powers data storage, task validation, business logic, and JSON file persistence.",
+    badge: "Full-Stack Engine (Task 7)",
+    overview: "Task 7 upgrades the TechBridge Intern Dashboard with a genuine Node.js and Express backend REST API. It handles incoming HTTP requests, performs strict status validation, serves endpoints (/api/tasks, /api/health), and asynchronously persists task state to backend/data/tasks.json.",
     coreCapabilities: [
       {
         title: "Node.js (JavaScript Runtime)",
-        desc: "An event-driven, non-blocking asynchronous JavaScript runtime allowing developers to build fast, scalable network applications using JavaScript on both client and server."
+        desc: "An event-driven, non-blocking asynchronous JavaScript runtime allowing developers to build fast, scalable network applications."
       },
       {
-        title: "Express.js (Node Framework)",
-        desc: "A minimalist, highly flexible web framework for Node.js providing robust routing, middleware pipelines, and RESTful API generation."
+        title: "Express.js REST Framework",
+        desc: "Minimalist web framework providing routing for GET, PUT, POST, DELETE endpoints, JSON body parsing, and CORS headers."
       },
       {
-        title: "Django (Python Framework)",
-        desc: "A high-level Python web framework that encourages rapid development and clean design, featuring an 'out-of-the-box' ORM, admin panel, and robust security safeguards."
+        title: "JSON File Persistence",
+        desc: "Atomic, asynchronous file read/write operations ensuring task status updates survive server restarts."
       },
       {
-        title: "Supporting Frameworks",
-        desc: "Other prominent technologies include Flask (lightweight Python), Laravel (structured PHP), and .NET Core (high-performance C# enterprise services)."
+        title: "Same-Origin Static Serving",
+        desc: "Express simultaneously delivers the REST API and serves the production frontend on port 3000."
       }
     ],
     useCases: [
-      "RESTful and GraphQL APIs serving web and mobile client applications.",
-      "Authentication systems with JWT tokens, OAuth, and session management.",
-      "Database integration with relational (PostgreSQL, MySQL) and document (MongoDB) databases."
+      "Task management dashboards requiring reliable status persistence across user sessions.",
+      "Full-stack web engineering applications bridging frontend DOM with backend APIs.",
+      "Educational platforms demonstrating client-server HTTP communication."
     ],
-    note: "Educational information only. A backend is not required for this assignment."
+    note: "Currently active! Powered by backend/server.js and backend/data/tasks.json."
   }
 };
 
 // ==========================================================================
-// 4. APPLICATION STATE & STORAGE
-// ==========================================================================
-const STORAGE_KEY = "techbridgeDashboardProgress";
-const THEME_STORAGE_KEY = "techbridgeDashboardTheme";
-
-let tasks = [];
-let activeTaskFilter = "all";
-let taskSearchQuery = "";
-let activeTechnology = "nextjs";
-let focusedTriggerElement = null;
-
-// ==========================================================================
-// 5. LOCAL STORAGE MANAGEMENT
+// 2. BACKEND API SERVICE (FETCH API WRAPPERS)
 // ==========================================================================
 
 /**
- * Loads tasks from LocalStorage or falls back to official sample tasks
+ * Checks backend health via GET /api/health
  */
-function loadTasks() {
+async function checkBackendStatus() {
+  const dot = document.getElementById("backend-status-dot");
+  const text = document.getElementById("backend-status-text");
+  const mobileDot = document.getElementById("mobile-backend-status-dot");
+  const mobileText = document.getElementById("mobile-backend-status-text");
+  const retryBtn = document.getElementById("btn-retry-backend");
+
+  if (retryBtn) retryBtn.classList.add("is-refreshing");
+
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed) && parsed.length === initialTasks.length) {
-        // Merge saved statuses with fresh initial task definitions
-        tasks = initialTasks.map(t => {
-          const match = parsed.find(p => p.id === t.id);
-          return match ? { ...t, status: match.status } : { ...t };
-        });
-        return;
+    const response = await fetch(`${API_BASE_URL}/api/health`, {
+      method: "GET",
+      headers: { "Accept": "application/json" },
+      cache: "no-store"
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      isBackendConnected = true;
+      updateBackendUI(true, "Backend Status: Connected");
+      console.log("[Backend Health Check]: Connected", data);
+    } else {
+      isBackendConnected = false;
+      updateBackendUI(false, "Backend Status: Offline");
+    }
+  } catch (error) {
+    isBackendConnected = false;
+    updateBackendUI(false, "Backend Status: Offline");
+    console.warn("[Backend Health Check]: Offline/Unreachable", error.message);
+  } finally {
+    if (retryBtn) {
+      setTimeout(() => retryBtn.classList.remove("is-refreshing"), 400);
+    }
+  }
+}
+
+/**
+ * Updates UI elements reflecting backend connection status
+ */
+function updateBackendUI(connected, label) {
+  const dot = document.getElementById("backend-status-dot");
+  const text = document.getElementById("backend-status-text");
+  const mobileDot = document.getElementById("mobile-backend-status-dot");
+  const mobileText = document.getElementById("mobile-backend-status-text");
+
+  if (dot) {
+    dot.className = `status-indicator-dot ${connected ? "dot-connected" : "dot-offline"}`;
+  }
+  if (text) {
+    text.textContent = label;
+  }
+  if (mobileDot) {
+    mobileDot.className = `status-indicator-dot ${connected ? "dot-connected" : "dot-offline"}`;
+  }
+  if (mobileText) {
+    mobileText.textContent = connected ? "API Online" : "API Offline";
+  }
+}
+
+/**
+ * Retrieves all tasks from the backend via GET /api/tasks
+ */
+async function fetchTasks() {
+  if (isFetchingTasks) return;
+  isFetchingTasks = true;
+
+  const loadingEl = document.getElementById("tasks-loading-state");
+  const errorEl = document.getElementById("tasks-error-state");
+  const containerEl = document.getElementById("tasks-container");
+  const emptyEl = document.getElementById("tasks-empty-state");
+
+  // Show loading indicator, hide error and cards
+  if (loadingEl) loadingEl.style.display = "flex";
+  if (errorEl) errorEl.style.display = "none";
+  if (containerEl) containerEl.style.display = "none";
+  if (emptyEl) emptyEl.style.display = "none";
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/tasks`, {
+      method: "GET",
+      headers: { "Accept": "application/json" },
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error(`Server returned HTTP ${response.status}: ${response.statusText}`);
+    }
+
+    const result = await response.json();
+
+    if (!result || !result.success || !Array.isArray(result.data)) {
+      throw new Error("Invalid API response format received from /api/tasks");
+    }
+
+    // Set tasks data from server
+    tasks = result.data;
+    isBackendConnected = true;
+    updateBackendUI(true, "Backend Status: Connected");
+
+    // Hide loading, show container
+    if (loadingEl) loadingEl.style.display = "none";
+    if (containerEl) containerEl.style.display = "grid";
+
+    // Re-render UI
+    renderTasks();
+    updateDashboardStats();
+    updateProgress();
+
+    console.log(`[API Integration]: Successfully loaded ${tasks.length} tasks from GET /api/tasks`);
+  } catch (error) {
+    console.error("[API Error fetching tasks]:", error);
+    isBackendConnected = false;
+    updateBackendUI(false, "Backend Status: Offline");
+
+    // Show error state with user-friendly guidance
+    if (loadingEl) loadingEl.style.display = "none";
+    if (errorEl) {
+      errorEl.style.display = "flex";
+      const errorMsg = document.getElementById("tasks-error-message");
+      if (errorMsg) {
+        errorMsg.textContent = error.message.includes("Failed to fetch") || error.message.includes("NetworkError")
+          ? "Unable to connect to the Node.js backend. Please verify the Express server is running on port 3000."
+          : `Error loading tasks: ${error.message}. Please retry.`;
       }
     }
-  } catch (err) {
-    console.warn("Could not read tasks from LocalStorage, using initial state:", err);
+    showToast("Unable to reach backend API. Check server connection.", "error");
+  } finally {
+    isFetchingTasks = false;
   }
-  // Default sample state: Tasks 1-3 completed, Task 4 in-progress, Tasks 5-8 not-started
-  tasks = JSON.parse(JSON.stringify(initialTasks));
 }
 
 /**
- * Saves task status progress safely into LocalStorage
+ * Fetches single task details from GET /api/tasks/:id
  */
-function saveTasks() {
+async function fetchTaskById(taskId) {
   try {
-    const toSave = tasks.map(t => ({ id: t.id, status: t.status }));
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
-  } catch (err) {
-    console.warn("Could not save tasks to LocalStorage:", err);
+    const response = await fetch(`${API_BASE_URL}/api/tasks/${taskId}`, {
+      method: "GET",
+      headers: { "Accept": "application/json" },
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error(`Task with ID ${taskId} not found (HTTP ${response.status})`);
+    }
+
+    const result = await response.json();
+    return result.data;
+  } catch (error) {
+    console.error(`[API Error fetching task ${taskId}]:`, error);
+    throw error;
   }
 }
 
 /**
- * Restores the sample/default progress state after confirmation
+ * Updates a task status via PUT /api/tasks/:id
  */
-function resetProgress() {
-  const confirmed = window.confirm(
-    "Are you sure you want to reset your dashboard progress? This will restore the default sample milestones (Tasks 1–3 completed, Task 4 in-progress)."
-  );
+async function updateTaskStatus(taskId, newStatus, buttonElement = null) {
+  const originalButtonContent = buttonElement ? buttonElement.innerHTML : null;
 
+  if (buttonElement) {
+    buttonElement.disabled = true;
+    buttonElement.innerHTML = `<span class="loading-spinner" style="width: 14px; height: 14px; border-width: 2px;"></span> <span>Saving...</span>`;
+  }
+
+  try {
+    // Normalizing status to accepted format
+    const validStatus = newStatus.replace(/-/g, "_");
+
+    const response = await fetch(`${API_BASE_URL}/api/tasks/${taskId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({ status: validStatus })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || `HTTP ${response.status} failed to update task`);
+    }
+
+    const result = await response.json();
+    const updatedTask = result.data;
+
+    // Update local task state from server response
+    const index = tasks.findIndex(t => t.id === taskId);
+    if (index !== -1) {
+      tasks[index] = { ...tasks[index], ...updatedTask };
+    }
+
+    // Refresh UI components
+    renderTasks();
+    updateDashboardStats();
+    updateProgress();
+
+    showToast(`Task ${taskId} marked as completed ✓`, "success");
+    console.log(`[API Task Updated]: Task ${taskId} is now ${validStatus}`);
+    return updatedTask;
+  } catch (error) {
+    console.error(`[API Error updating task ${taskId}]:`, error);
+    showToast(`Failed to update task: ${error.message}`, "error");
+
+    if (buttonElement && originalButtonContent) {
+      buttonElement.disabled = false;
+      buttonElement.innerHTML = originalButtonContent;
+    }
+    throw error;
+  }
+}
+
+/**
+ * Resets tasks on backend via POST /api/tasks/reset
+ */
+async function resetBackendTasks() {
+  const confirmed = window.confirm(
+    "Reset internship progress? This will reset tasks in backend/data/tasks.json to initial Task 7 state."
+  );
   if (!confirmed) return;
 
-  tasks = JSON.parse(JSON.stringify(initialTasks));
-  saveTasks();
-  activeTaskFilter = "all";
-  taskSearchQuery = "";
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/tasks/reset`, {
+      method: "POST",
+      headers: { "Accept": "application/json" }
+    });
 
-  const searchInput = document.getElementById("task-search-input");
-  if (searchInput) searchInput.value = "";
+    if (!response.ok) {
+      throw new Error(`Server returned HTTP ${response.status}`);
+    }
 
-  updateFilterButtonStates();
-  updateProgressUI();
-  renderTasks();
-  showToast("Dashboard progress reset to default sample state.", "info");
+    await fetchTasks();
+    showToast("Internship tasks reset to default state ✓", "info");
+  } catch (error) {
+    console.error("[API Error resetting tasks]:", error);
+    showToast(`Reset failed: ${error.message}`, "error");
+  }
 }
 
 // ==========================================================================
-// 6. PROGRESS CALCULATIONS
+// 3. STATS & PROGRESS COMPUTATION
 // ==========================================================================
 
 function getProgressMetrics() {
   const total = tasks.length;
+  if (total === 0) {
+    return { total: 0, completed: 0, inProgress: 0, notStarted: 0, percentage: 0, currentTask: null };
+  }
+
   const completed = tasks.filter(t => t.status === "completed").length;
-  const remaining = total - completed;
-  const rawPercentage = total > 0 ? (completed / total) * 100 : 0;
-  
-  // Format percentage: integer if whole number (e.g. 50%), otherwise 1 decimal place (e.g. 37.5%)
-  const formattedPercentage = rawPercentage % 1 === 0 
-    ? `${rawPercentage}%` 
-    : `${rawPercentage.toFixed(1)}%`;
+  const inProgress = tasks.filter(t => t.status === "in_progress" || t.status === "in-progress").length;
+  const notStarted = tasks.filter(t => t.status === "not_started" || t.status === "not-started").length;
+  const rawPercentage = (completed / total) * 100;
+  const percentage = Math.round(rawPercentage * 10) / 10;
 
-  const currentTask = tasks.find(t => t.status === "in-progress") || 
-                      tasks.find(t => t.status === "not-started") || 
-                      tasks[tasks.length - 1];
+  // Next active task
+  let currentTask = tasks.find(t => t.status === "in_progress" || t.status === "in-progress");
+  if (!currentTask && completed < total) {
+    currentTask = tasks.find(t => t.status === "not_started" || t.status === "not-started");
+  }
 
-  return {
-    total,
-    completed,
-    remaining,
-    rawPercentage,
-    formattedPercentage,
-    currentTask
-  };
+  return { total, completed, inProgress, notStarted, percentage, currentTask };
 }
 
-/**
- * Updates all summary cards, progress bars, and header indicators
- */
-function updateProgressUI() {
+function updateDashboardStats() {
   const metrics = getProgressMetrics();
 
-  // Summary Cards
   const totalEl = document.getElementById("stat-total-tasks");
   const completedEl = document.getElementById("stat-completed-tasks");
   const remainingEl = document.getElementById("stat-remaining-tasks");
-  const progressPercentEl = document.getElementById("stat-progress-percent");
+  const percentEl = document.getElementById("stat-progress-percent");
   const currentTaskNameEl = document.getElementById("stat-current-task-name");
 
   if (totalEl) totalEl.textContent = metrics.total;
   if (completedEl) completedEl.textContent = metrics.completed;
-  if (remainingEl) remainingEl.textContent = metrics.remaining;
-  if (progressPercentEl) progressPercentEl.textContent = metrics.formattedPercentage;
+  if (remainingEl) remainingEl.textContent = metrics.total - metrics.completed;
+  if (percentEl) percentEl.textContent = `${metrics.percentage}%`;
+
   if (currentTaskNameEl) {
-    if (metrics.completed === metrics.total) {
-      currentTaskNameEl.textContent = "All 8 Tasks Complete!";
+    if (metrics.completed === metrics.total && metrics.total > 0) {
+      currentTaskNameEl.textContent = "All 8 Tasks Completed! 🎉";
     } else if (metrics.currentTask) {
-      currentTaskNameEl.textContent = `Task ${metrics.currentTask.number}: ${metrics.currentTask.title}`;
+      currentTaskNameEl.textContent = `Task ${metrics.currentTask.id}: ${metrics.currentTask.title}`;
+    } else {
+      currentTaskNameEl.textContent = "No tasks in progress";
     }
   }
 
-  // Progress Bar
-  const progressFill = document.getElementById("progress-bar-fill");
-  const progressLabel = document.getElementById("progress-bar-label");
-  const progressFraction = document.getElementById("progress-bar-fraction");
-  
-  if (progressFill) {
-    progressFill.style.width = `${metrics.rawPercentage}%`;
-    progressFill.setAttribute("aria-valuenow", metrics.rawPercentage);
-  }
-  if (progressLabel) progressLabel.textContent = metrics.formattedPercentage;
-  if (progressFraction) {
-    progressFraction.textContent = `${metrics.completed} of ${metrics.total} Tasks Completed`;
-  }
-
-  // Header Current Task Indicator
+  // Header Current Task Indicator Badge
   const headerCurrentTaskEl = document.getElementById("header-current-task");
   if (headerCurrentTaskEl) {
-    if (metrics.completed === metrics.total) {
+    if (metrics.completed === metrics.total && metrics.total > 0) {
       headerCurrentTaskEl.textContent = "All Tasks Completed";
     } else if (metrics.currentTask) {
-      headerCurrentTaskEl.textContent = `Task ${metrics.currentTask.number} • Day ${metrics.currentTask.day.replace("Day ", "")}`;
+      const dayLabel = metrics.currentTask.day || `Day ${metrics.currentTask.id * 3}`;
+      headerCurrentTaskEl.textContent = `Task ${metrics.currentTask.id} • ${dayLabel}`;
     }
   }
 
   // 100% Celebration Banner
   const celebrationBanner = document.getElementById("all-completed-banner");
   if (celebrationBanner) {
-    if (metrics.completed === metrics.total) {
-      celebrationBanner.style.display = "flex";
-    } else {
-      celebrationBanner.style.display = "none";
-    }
+    celebrationBanner.style.display = (metrics.completed === metrics.total && metrics.total > 0) ? "flex" : "none";
   }
 }
 
-// ==========================================================================
-// 7. TASK STATUS PROGRESSION LOGIC
-// ==========================================================================
-
-/**
- * Marks a task as completed and automatically advances subsequent task to in-progress
- */
-function markTaskComplete(taskId) {
-  const targetIndex = tasks.findIndex(t => t.id === taskId);
-  if (targetIndex === -1) return;
-
-  const current = tasks[targetIndex];
-  if (current.status === "completed") return;
-
-  // Mark task as completed
-  current.status = "completed";
-
-  // Sensible progression: advance the first remaining non-completed task to "in-progress"
-  const nextIncomplete = tasks.find(t => t.status !== "completed");
-  if (nextIncomplete && nextIncomplete.status !== "in-progress") {
-    // Ensure no other task is in-progress
-    tasks.forEach(t => {
-      if (t.status === "in-progress" && t.id !== nextIncomplete.id) {
-        t.status = "not-started";
-      }
-    });
-    nextIncomplete.status = "in-progress";
-  }
-
-  saveTasks();
-  updateProgressUI();
-  renderTasks();
-
+function updateProgress() {
   const metrics = getProgressMetrics();
-  if (metrics.completed === metrics.total) {
-    showToast("🎉 Congratulations! You have completed all 8 internship tasks!", "success");
-  } else {
-    showToast(`Task ${current.number} marked as completed ✓`, "success");
+
+  const progressBarLabel = document.getElementById("progress-bar-label");
+  const progressBarTrack = document.getElementById("progress-bar-track");
+  const progressBarFill = document.getElementById("progress-bar-fill");
+  const progressFraction = document.getElementById("progress-bar-fraction");
+
+  if (progressBarLabel) progressBarLabel.textContent = `${metrics.percentage}%`;
+
+  if (progressBarTrack) {
+    progressBarTrack.setAttribute("aria-valuenow", metrics.percentage);
+  }
+
+  if (progressBarFill) {
+    progressBarFill.style.width = `${metrics.percentage}%`;
+  }
+
+  if (progressFraction) {
+    progressFraction.textContent = `${metrics.completed} of ${metrics.total} Tasks Completed`;
   }
 }
 
 // ==========================================================================
-// 8. TASK RENDERING FUNCTIONS
+// 4. TASK FILTERING & SEARCH
 // ==========================================================================
 
 function getFilteredTasks() {
-  const query = taskSearchQuery.trim().toLowerCase();
-
   return tasks.filter(task => {
-    // Status Filter
+    // Status Filter Matching
     let matchesStatus = true;
-    if (activeTaskFilter !== "all") {
-      matchesStatus = task.status === activeTaskFilter;
+    const taskStatus = (task.status || "").replace(/-/g, "_");
+
+    if (activeTaskFilter === "completed") {
+      matchesStatus = taskStatus === "completed";
+    } else if (activeTaskFilter === "in-progress" || activeTaskFilter === "in_progress") {
+      matchesStatus = taskStatus === "in_progress";
+    } else if (activeTaskFilter === "not-started" || activeTaskFilter === "not_started") {
+      matchesStatus = taskStatus === "not_started";
     }
 
-    // Search Query Filter
+    // Search Query Matching across title, description, skills
     let matchesSearch = true;
-    if (query) {
-      const inTitle = task.title.toLowerCase().includes(query);
-      const inDesc = task.description.toLowerCase().includes(query);
-      const inSkills = task.skills ? task.skills.some(s => s.toLowerCase().includes(query)) : false;
-      const inDay = task.day.toLowerCase().includes(query);
-      matchesSearch = inTitle || inDesc || inSkills || inDay;
+    if (taskSearchQuery.trim() !== "") {
+      const q = taskSearchQuery.toLowerCase();
+      const titleMatch = (task.title || "").toLowerCase().includes(q);
+      const descMatch = (task.description || "").toLowerCase().includes(q);
+      const stageMatch = (task.stage || "").toLowerCase().includes(q);
+      const skillsMatch = Array.isArray(task.skills) && task.skills.some(s => s.toLowerCase().includes(q));
+      matchesSearch = titleMatch || descMatch || stageMatch || skillsMatch;
     }
 
     return matchesStatus && matchesSearch;
   });
 }
 
-/**
- * Creates individual task card DOM element
- */
-function createTaskCardElement(task) {
-  const card = document.createElement("article");
-  const isCurrent = task.status === "in-progress";
-  const isCompleted = task.status === "completed";
+function updateFilterButtonStates() {
+  const filterButtons = document.querySelectorAll("[data-task-filter]");
+  const counts = {
+    all: tasks.length,
+    completed: tasks.filter(t => t.status === "completed").length,
+    inProgress: tasks.filter(t => t.status === "in_progress" || t.status === "in-progress").length,
+    notStarted: tasks.filter(t => t.status === "not_started" || t.status === "not-started").length
+  };
 
-  card.className = `dashboard-task-card status-${task.status} ${isCurrent ? "is-current-task" : ""}`;
-  card.setAttribute("data-task-id", task.id);
+  filterButtons.forEach(btn => {
+    const filter = btn.getAttribute("data-task-filter");
+    const isCurrent = filter === activeTaskFilter;
+    btn.classList.toggle("active", isCurrent);
+    btn.setAttribute("aria-pressed", isCurrent ? "true" : "false");
 
-  // Status Badge UI
-  let statusBadgeHtml = "";
+    if (filter === "all") btn.textContent = `All (${counts.all})`;
+    if (filter === "completed") btn.textContent = `Completed (${counts.completed})`;
+    if (filter === "in-progress") btn.textContent = `In Progress (${counts.inProgress})`;
+    if (filter === "not-started") btn.textContent = `Not Started (${counts.notStarted})`;
+  });
+
+  const countPill = document.getElementById("task-results-count");
+  if (countPill) {
+    const filteredCount = getFilteredTasks().length;
+    countPill.textContent = `${filteredCount} of ${tasks.length} Tasks`;
+  }
+}
+
+// ==========================================================================
+// 5. RENDERING TASK CARDS (SAFE DOM CREATION)
+// ==========================================================================
+
+function renderTasks() {
+  const container = document.getElementById("tasks-container");
+  const emptyState = document.getElementById("tasks-empty-state");
+  if (!container) return;
+
+  const filtered = getFilteredTasks();
+  updateFilterButtonStates();
+
+  if (filtered.length === 0) {
+    container.innerHTML = "";
+    container.style.display = "none";
+    if (emptyState) emptyState.style.display = "block";
+    return;
+  }
+
+  if (emptyState) emptyState.style.display = "none";
+  container.style.display = "grid";
+  container.innerHTML = filtered.map(task => renderTaskCard(task)).join("");
+
+  // Attach card event listeners
+  filtered.forEach(task => {
+    const viewBtn = document.getElementById(`btn-view-task-${task.id}`);
+    if (viewBtn) {
+      viewBtn.addEventListener("click", () => openTaskModal(task.id, viewBtn));
+    }
+
+    const completeBtn = document.getElementById(`btn-complete-task-${task.id}`);
+    if (completeBtn) {
+      completeBtn.addEventListener("click", () => updateTaskStatus(task.id, "completed", completeBtn));
+    }
+  });
+}
+
+function renderTaskCard(task) {
+  const taskStatus = (task.status || "not_started").replace(/-/g, "_");
+  const isCompleted = taskStatus === "completed";
+  const isInProgress = taskStatus === "in_progress";
+  const metrics = getProgressMetrics();
+  const isCurrent = metrics.currentTask && metrics.currentTask.id === task.id;
+
+  let badgeMarkup = "";
   if (isCompleted) {
-    statusBadgeHtml = `
+    badgeMarkup = `
       <span class="task-status-badge badge-completed">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
         <span>Completed</span>
       </span>
     `;
-  } else if (isCurrent) {
-    statusBadgeHtml = `
+  } else if (isInProgress) {
+    badgeMarkup = `
       <span class="task-status-badge badge-in-progress">
         <span class="status-pulse-dot" aria-hidden="true"></span>
         <span>In Progress</span>
       </span>
     `;
   } else {
-    statusBadgeHtml = `
+    badgeMarkup = `
       <span class="task-status-badge badge-not-started">
         <span class="status-empty-dot" aria-hidden="true"></span>
         <span>Not Started</span>
@@ -550,191 +627,169 @@ function createTaskCardElement(task) {
     `;
   }
 
-  // Current Task Tag
-  const currentTagHtml = isCurrent 
-    ? `<span class="current-task-pill">CURRENT TASK</span>` 
-    : "";
+  // Safe string escaping
+  const safeTitle = escapeHtml(task.title || `Task ${task.id}`);
+  const safeDesc = escapeHtml(task.description || "");
+  const safeStage = escapeHtml(task.stage || "Stage 01 • Foundation");
+  const safeDay = escapeHtml(task.day || `Day ${task.id * 3}`);
 
-  // Action Buttons
-  let completeBtnHtml = "";
-  if (isCompleted) {
-    completeBtnHtml = `
-      <button type="button" class="btn-task-action btn-completed-check" disabled aria-label="Task ${task.number} is already completed">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12"></polyline>
-        </svg>
-        <span>Completed</span>
-      </button>
-    `;
-  } else {
-    completeBtnHtml = `
-      <button type="button" class="btn-task-action btn-mark-complete" onclick="markTaskComplete(${task.id})" aria-label="Mark Task ${task.number} as completed">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <polyline points="12 6 12 12 16 14"></polyline>
-        </svg>
-        <span>Mark as Completed</span>
-      </button>
-    `;
-  }
+  const cardClasses = [
+    "dashboard-task-card",
+    isCompleted ? "status-completed" : "",
+    isCurrent ? "is-current-task" : ""
+  ].filter(Boolean).join(" ");
 
-  // Related URL link if available
-  const relatedLinkHtml = task.relatedUrl ? `
-    <a href="${task.relatedUrl}" class="task-related-link" title="${task.urlLabel || 'Open related experience'}">
-      <span>${task.urlLabel || 'Open Experience'}</span>
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-        <polyline points="15 3 21 3 21 9"></polyline>
-        <line x1="10" y1="14" x2="21" y2="3"></line>
-      </svg>
-    </a>
-  ` : "";
-
-  card.innerHTML = `
-    <div class="task-card-header">
-      <div class="task-badge-row">
-        <span class="task-num-tag">Task 0${task.number}</span>
-        <span class="task-day-tag">${escapeHtml(task.day)}</span>
-        ${currentTagHtml}
+  return `
+    <article class="${cardClasses}" id="task-card-${task.id}" data-task-id="${task.id}">
+      <div class="task-card-header">
+        <div class="task-badge-row">
+          <span class="task-num-tag">Task 0${task.id}</span>
+          <span class="task-day-tag">${safeDay}</span>
+          ${isCurrent ? `<span class="current-task-pill">CURRENT TASK</span>` : ""}
+        </div>
+        ${badgeMarkup}
       </div>
-      ${statusBadgeHtml}
-    </div>
 
-    <h3 class="task-card-heading">${escapeHtml(task.title)}</h3>
-    <p class="task-card-summary">${escapeHtml(task.description)}</p>
+      <h3 class="task-card-heading">${safeTitle}</h3>
+      <p class="task-card-summary">${safeDesc}</p>
 
-    <div class="task-meta-footer">
-      <span class="task-stage-indicator">${escapeHtml(task.stage)}</span>
-      ${relatedLinkHtml}
-    </div>
+      <div class="task-meta-footer">
+        <span class="task-stage-indicator">${safeStage}</span>
+        ${task.relatedUrl ? `
+          <a href="${task.relatedUrl}" class="task-related-link">
+            <span>${escapeHtml(task.urlLabel || "View Page")}</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        ` : `<span></span>`}
+      </div>
 
-    <div class="task-card-actions">
-      <button type="button" class="btn-view-task-details" onclick="openTaskModal(${task.id}, this)">
-        <span>View Task</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
-      </button>
-      ${completeBtnHtml}
-    </div>
+      <div class="task-card-actions">
+        <button type="button" class="btn-view-task-details" id="btn-view-task-${task.id}" aria-label="View Task ${task.id} details">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          <span>View Task</span>
+        </button>
+
+        ${isCompleted ? `
+          <button type="button" class="btn-task-action btn-completed-check" disabled aria-label="Task ${task.id} is already completed">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Done</span>
+          </button>
+        ` : `
+          <button type="button" class="btn-task-action btn-mark-complete" id="btn-complete-task-${task.id}" aria-label="Mark Task ${task.id} as completed">
+            <span>Mark Complete</span>
+          </button>
+        `}
+      </div>
+    </article>
   `;
-
-  return card;
 }
+
+// ==========================================================================
+// 6. ACCESSIBLE MODALS (VIEW TASK VIA API & API DOCS)
+// ==========================================================================
 
 /**
- * Renders all filtered tasks to the DOM
+ * Opens task modal by fetching fresh data from GET /api/tasks/:id
  */
-function renderTasks() {
-  const container = document.getElementById("tasks-container");
-  const emptyState = document.getElementById("tasks-empty-state");
-  const countBadge = document.getElementById("task-results-count");
-
-  if (!container) return;
-
-  const filtered = getFilteredTasks();
-  container.innerHTML = "";
-
-  // Update dynamic count badge with proper singular/plural grammar
-  if (countBadge) {
-    if (activeTaskFilter === "all" && !taskSearchQuery) {
-      countBadge.textContent = `${filtered.length} Tasks`;
-    } else if (filtered.length === 1) {
-      countBadge.textContent = "1 Task Found";
-    } else {
-      countBadge.textContent = `${filtered.length} Tasks Found`;
-    }
-  }
-
-  // Handle empty state
-  if (filtered.length === 0) {
-    if (emptyState) emptyState.style.display = "block";
-    return;
-  }
-
-  if (emptyState) emptyState.style.display = "none";
-
-  filtered.forEach(task => {
-    container.appendChild(createTaskCardElement(task));
-  });
-}
-
-function updateFilterButtonStates() {
-  const buttons = document.querySelectorAll("[data-task-filter]");
-  buttons.forEach(btn => {
-    const filter = btn.getAttribute("data-task-filter");
-    const isActive = filter === activeTaskFilter;
-    btn.classList.toggle("active", isActive);
-    btn.setAttribute("aria-pressed", isActive ? "true" : "false");
-  });
-}
-
-// ==========================================================================
-// 9. TASK DETAILS MODAL (REUSABLE & ACCESSIBLE)
-// ==========================================================================
-
-function openTaskModal(taskId, triggerBtn) {
-  const task = tasks.find(t => t.id === taskId);
+async function openTaskModal(taskId, triggerBtn = null) {
+  focusedTriggerElement = triggerBtn;
   const modal = document.getElementById("task-details-modal");
-  if (!task || !modal) return;
+  if (!modal) return;
 
-  focusedTriggerElement = triggerBtn || document.activeElement;
+  const numEl = document.getElementById("modal-task-number");
+  const dayEl = document.getElementById("modal-task-day");
+  const statusEl = document.getElementById("modal-task-status");
+  const titleEl = document.getElementById("modal-task-title");
+  const descEl = document.getElementById("modal-task-desc");
+  const stageEl = document.getElementById("modal-task-stage");
+  const milestoneEl = document.getElementById("modal-task-milestone");
+  const deliverableEl = document.getElementById("modal-task-deliverable");
+  const skillsListEl = document.getElementById("modal-task-skills");
+  const actionContainer = document.getElementById("modal-action-buttons");
 
-  // Populate data
-  document.getElementById("modal-task-number").textContent = `Task 0${task.number}`;
-  document.getElementById("modal-task-day").textContent = task.day;
-  document.getElementById("modal-task-title").textContent = task.title;
-  document.getElementById("modal-task-desc").textContent = task.description;
-  document.getElementById("modal-task-stage").textContent = task.stage;
-  document.getElementById("modal-task-milestone").textContent = task.milestone;
-  document.getElementById("modal-task-deliverable").textContent = task.deliverable;
-
-  // Status Badge in Modal
-  const statusContainer = document.getElementById("modal-task-status");
-  if (statusContainer) {
-    let statusClass = "badge-not-started";
-    let statusText = "Not Started";
-    if (task.status === "completed") {
-      statusClass = "badge-completed";
-      statusText = "Completed";
-    } else if (task.status === "in-progress") {
-      statusClass = "badge-in-progress";
-      statusText = "In Progress";
-    }
-    statusContainer.className = `task-status-badge ${statusClass}`;
-    statusContainer.innerHTML = `<span>${statusText}</span>`;
-  }
-
-  // Skills chips
-  const skillsContainer = document.getElementById("modal-task-skills");
-  if (skillsContainer) {
-    skillsContainer.innerHTML = (task.skills || []).map(skill => 
-      `<span class="tag-chip tag-skill">${escapeHtml(skill)}</span>`
-    ).join("");
-  }
-
-  // Dynamic modal action button
-  const modalActionContainer = document.getElementById("modal-action-buttons");
-  if (modalActionContainer) {
-    if (task.status === "completed") {
-      modalActionContainer.innerHTML = `
-        <button type="button" class="btn btn-secondary" onclick="closeTaskModal()">Close Details</button>
-        ${task.relatedUrl ? `<a href="${task.relatedUrl}" class="btn btn-primary">Open Related Experience</a>` : ""}
-      `;
-    } else {
-      modalActionContainer.innerHTML = `
-        <button type="button" class="btn btn-secondary" onclick="closeTaskModal()">Cancel</button>
-        <button type="button" class="btn btn-primary" onclick="markTaskComplete(${task.id}); closeTaskModal();">
-          Mark as Completed ✓
-        </button>
-      `;
-    }
-  }
+  // Show placeholder while fetching from GET /api/tasks/:id
+  if (numEl) numEl.textContent = `Task 0${taskId}`;
+  if (titleEl) titleEl.textContent = "Loading task details from API...";
+  if (descEl) descEl.textContent = "Fetching live record from GET /api/tasks/" + taskId;
+  if (statusEl) statusEl.innerHTML = `<span class="loading-spinner" style="width: 12px; height: 12px; border-width: 2px;"></span> Loading...`;
+  if (actionContainer) actionContainer.innerHTML = `<button type="button" class="btn btn-secondary" onclick="closeTaskModal()">Close</button>`;
 
   modal.classList.add("is-visible");
   modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
+
+  try {
+    const task = await fetchTaskById(taskId);
+    const taskStatus = (task.status || "not_started").replace(/-/g, "_");
+    const isCompleted = taskStatus === "completed";
+    const isInProgress = taskStatus === "in_progress";
+
+    if (numEl) numEl.textContent = `Task 0${task.id}`;
+    if (dayEl) dayEl.textContent = task.day || `Day ${task.id * 3}`;
+    if (titleEl) titleEl.textContent = task.title;
+    if (descEl) descEl.textContent = task.description;
+    if (stageEl) stageEl.textContent = task.stage || "Stage 01 • Foundation";
+    if (milestoneEl) milestoneEl.textContent = task.milestone || "Curriculum Milestone";
+    if (deliverableEl) deliverableEl.textContent = task.deliverable || "Specified task deliverable.";
+
+    // Render Status Badge
+    if (statusEl) {
+      if (isCompleted) {
+        statusEl.className = "task-status-badge badge-completed";
+        statusEl.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Completed`;
+      } else if (isInProgress) {
+        statusEl.className = "task-status-badge badge-in-progress";
+        statusEl.innerHTML = `<span class="status-pulse-dot"></span> In Progress`;
+      } else {
+        statusEl.className = "task-status-badge badge-not-started";
+        statusEl.innerHTML = `<span class="status-empty-dot"></span> Not Started`;
+      }
+    }
+
+    // Render Skills Chips
+    if (skillsListEl) {
+      const skills = Array.isArray(task.skills) ? task.skills : ["HTML5", "CSS3", "JavaScript", "REST API"];
+      skillsListEl.innerHTML = skills.map(skill => `
+        <span class="tag-chip tag-skill">${escapeHtml(skill)}</span>
+      `).join("");
+    }
+
+    // Modal Action Buttons
+    if (actionContainer) {
+      if (isCompleted) {
+        actionContainer.innerHTML = `
+          <button type="button" class="btn btn-secondary" onclick="closeTaskModal()">Close Details</button>
+          ${task.relatedUrl ? `<a href="${task.relatedUrl}" class="btn btn-primary">Open Related Page</a>` : ""}
+        `;
+      } else {
+        actionContainer.innerHTML = `
+          <button type="button" class="btn btn-secondary" onclick="closeTaskModal()">Cancel</button>
+          <button type="button" class="btn btn-primary" id="modal-mark-complete-btn">
+            Mark as Completed ✓
+          </button>
+        `;
+        const modalCompleteBtn = document.getElementById("modal-mark-complete-btn");
+        if (modalCompleteBtn) {
+          modalCompleteBtn.addEventListener("click", async () => {
+            await updateTaskStatus(task.id, "completed", modalCompleteBtn);
+            closeTaskModal();
+          });
+        }
+      }
+    }
+  } catch (error) {
+    if (titleEl) titleEl.textContent = "Error Loading Task";
+    if (descEl) descEl.textContent = `Could not load task details from server: ${error.message}`;
+  }
 
   // Focus close button for accessibility
   const closeBtn = document.getElementById("modal-close-button");
@@ -757,8 +812,121 @@ function closeTaskModal() {
   }
 }
 
+// API Docs Modal Open / Close
+function openApiDocsModal() {
+  const modal = document.getElementById("api-docs-modal");
+  if (!modal) return;
+  modal.classList.add("is-visible");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+
+  const closeBtn = document.getElementById("api-docs-close-btn");
+  if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
+}
+
+function closeApiDocsModal() {
+  const modal = document.getElementById("api-docs-modal");
+  if (!modal) return;
+  modal.classList.remove("is-visible");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
+// Make accessible to inline onclicks
+window.closeTaskModal = closeTaskModal;
+window.closeApiDocsModal = closeApiDocsModal;
+
 // ==========================================================================
-// 10. MODERN WEB TECHNOLOGIES EXPLORER
+// 7. TOAST NOTIFICATIONS
+// ==========================================================================
+
+let toastTimeout = null;
+
+function showToast(message, type = "success") {
+  const toast = document.getElementById("dashboard-toast");
+  const toastText = document.getElementById("toast-message-text");
+  const toastIcon = document.getElementById("toast-icon");
+
+  if (!toast || !toastText) return;
+
+  if (toastTimeout) {
+    clearTimeout(toastTimeout);
+  }
+
+  toastText.textContent = message;
+
+  if (toastIcon) {
+    if (type === "success") {
+      toastIcon.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+      toast.className = "dashboard-toast toast-success is-active";
+    } else if (type === "error") {
+      toastIcon.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+      toast.className = "dashboard-toast toast-error is-active";
+    } else {
+      toastIcon.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`;
+      toast.className = "dashboard-toast toast-info is-active";
+    }
+  }
+
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove("is-active");
+  }, 4000);
+}
+
+// ==========================================================================
+// 8. THEME MANAGEMENT (DARK / LIGHT MODE)
+// ==========================================================================
+
+function initTheme() {
+  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+  if (savedTheme) {
+    setTheme(savedTheme);
+  } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    setTheme("dark");
+  } else {
+    setTheme("light");
+  }
+}
+
+function setTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch (err) {
+    // Ignore storage restrictions
+  }
+
+  const isDark = theme === "dark";
+  const label = isDark ? "Switch to light theme" : "Switch to dark theme";
+
+  // Sidebar toggle button
+  const themeToggle = document.getElementById("theme-toggle-btn");
+  if (themeToggle) {
+    themeToggle.setAttribute("aria-label", label);
+    themeToggle.innerHTML = isDark
+      ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg><span>Light Mode</span>`
+      : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Dark Mode</span>`;
+  }
+
+  // Mobile Topbar toggle button
+  const topbarThemeToggle = document.getElementById("topbar-theme-toggle");
+  if (topbarThemeToggle) {
+    topbarThemeToggle.setAttribute("aria-label", label);
+    topbarThemeToggle.innerHTML = isDark
+      ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`
+      : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+  }
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute("data-theme") || "light";
+  const target = current === "dark" ? "light" : "dark";
+  setTheme(target);
+  showToast(`Switched to ${target} mode`, "info");
+}
+
+// ==========================================================================
+// 9. TECHNOLOGY EXPLORER (PRESERVED FROM TASK 6)
 // ==========================================================================
 
 function renderTechnology(techKey) {
@@ -767,7 +935,6 @@ function renderTechnology(techKey) {
 
   activeTechnology = techKey;
 
-  // Update tabs active state
   const tabs = document.querySelectorAll("[data-tech-tab]");
   tabs.forEach(tab => {
     const isCurrent = tab.getAttribute("data-tech-tab") === techKey;
@@ -775,7 +942,6 @@ function renderTechnology(techKey) {
     tab.setAttribute("aria-selected", isCurrent ? "true" : "false");
   });
 
-  // Populate info panel
   const nameEl = document.getElementById("tech-detail-name");
   const categoryEl = document.getElementById("tech-detail-category");
   const taglineEl = document.getElementById("tech-detail-tagline");
@@ -807,83 +973,56 @@ function renderTechnology(techKey) {
 }
 
 // ==========================================================================
-// 11. TOAST NOTIFICATIONS
+// 10. SCROLLSPY & NAVIGATION HELPERS
 // ==========================================================================
 
-let toastTimeout = null;
+function initScrollSpy() {
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".sidebar-nav-link[href^='#']");
 
-function showToast(message, type = "success") {
-  const toast = document.getElementById("dashboard-toast");
-  const toastText = document.getElementById("toast-message-text");
-  const toastIcon = document.getElementById("toast-icon");
+  if (!("IntersectionObserver" in window)) return;
 
-  if (!toast || !toastText) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute("id");
+        navLinks.forEach(link => {
+          const href = link.getAttribute("href");
+          if (href === `#${id}`) {
+            navLinks.forEach(l => l.classList.remove("active"));
+            link.classList.add("active");
+          }
+        });
+      }
+    });
+  }, {
+    rootMargin: "-20% 0px -70% 0px"
+  });
 
-  if (toastTimeout) {
-    clearTimeout(toastTimeout);
-  }
-
-  toastText.textContent = message;
-
-  // Icon
-  if (toastIcon) {
-    if (type === "success") {
-      toastIcon.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
-      toast.className = "dashboard-toast toast-success is-active";
-    } else {
-      toastIcon.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`;
-      toast.className = "dashboard-toast toast-info is-active";
-    }
-  }
-
-  toastTimeout = setTimeout(() => {
-    toast.classList.remove("is-active");
-  }, 3500);
+  sections.forEach(sec => observer.observe(sec));
 }
 
-// ==========================================================================
-// 12. THEME (DARK / LIGHT MODE)
-// ==========================================================================
+function scrollToCurrentTask() {
+  const metrics = getProgressMetrics();
+  if (!metrics.currentTask) return;
 
-function initTheme() {
-  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-  if (savedTheme) {
-    setTheme(savedTheme);
-  } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    setTheme("dark");
-  } else {
-    setTheme("light");
-  }
-}
-
-function setTheme(theme) {
-  document.documentElement.setAttribute("data-theme", theme);
-  try {
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
-  } catch (err) {
-    // Ignore storage errors
+  // Make sure filter does not hide current task
+  const taskStatus = (metrics.currentTask.status || "not_started").replace(/-/g, "_");
+  if (activeTaskFilter !== "all" && activeTaskFilter !== taskStatus) {
+    activeTaskFilter = "all";
+    updateFilterButtonStates();
+    renderTasks();
   }
 
-  const themeToggle = document.getElementById("theme-toggle-btn");
-  if (themeToggle) {
-    const isDark = theme === "dark";
-    themeToggle.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
-    themeToggle.innerHTML = isDark 
-      ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg><span>Light Mode</span>`
-      : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span>Dark Mode</span>`;
+  const card = document.getElementById(`task-card-${metrics.currentTask.id}`);
+  if (card) {
+    card.scrollIntoView({ behavior: "smooth", block: "center" });
+    card.classList.remove("highlight-pulse");
+    void card.offsetWidth;
+    card.classList.add("highlight-pulse");
+    setTimeout(() => card.classList.remove("highlight-pulse"), 1800);
   }
 }
-
-function toggleTheme() {
-  const current = document.documentElement.getAttribute("data-theme") || "light";
-  const target = current === "dark" ? "light" : "dark";
-  setTheme(target);
-  showToast(`Switched to ${target} mode`, "info");
-}
-
-// ==========================================================================
-// 13. UTILITY HELPERS
-// ==========================================================================
 
 function escapeHtml(text) {
   if (typeof text !== "string") return "";
@@ -892,31 +1031,43 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
-function scrollToCurrentTask() {
-  const metrics = getProgressMetrics();
-  if (!metrics.currentTask) return;
-
-  // Make sure current task is visible (switch to 'all' or 'in-progress' if filtered)
-  if (activeTaskFilter !== "all" && activeTaskFilter !== metrics.currentTask.status) {
-    activeTaskFilter = "all";
-    updateFilterButtonStates();
-    renderTasks();
-  }
-
-  const card = document.querySelector(`[data-task-id="${metrics.currentTask.id}"]`);
-  if (card) {
-    card.scrollIntoView({ behavior: "smooth", block: "center" });
-    card.classList.add("highlight-pulse");
-    setTimeout(() => card.classList.remove("highlight-pulse"), 1600);
-  }
-}
-
 // ==========================================================================
-// 14. EVENT LISTENERS & BOOTSTRAP
+// 11. INITIALIZATION & EVENT LISTENERS
 // ==========================================================================
 
-function initEventListeners() {
-  // Task Filters
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Initialize Theme
+  initTheme();
+
+  // 2. Initial Health Check & Task Fetch from Express API
+  checkBackendStatus();
+  fetchTasks();
+
+  // 3. Render Technology Explorer Default
+  renderTechnology("nextjs");
+
+  // 4. Initialize Sidebar ScrollSpy
+  initScrollSpy();
+
+  // 5. Backend Status Refresh Button
+  const retryBackendBtn = document.getElementById("btn-retry-backend");
+  if (retryBackendBtn) {
+    retryBackendBtn.addEventListener("click", () => {
+      checkBackendStatus();
+      if (!tasks.length) fetchTasks();
+    });
+  }
+
+  // 6. Tasks Error Retry Button
+  const tasksRetryBtn = document.getElementById("tasks-retry-btn");
+  if (tasksRetryBtn) {
+    tasksRetryBtn.addEventListener("click", () => {
+      checkBackendStatus();
+      fetchTasks();
+    });
+  }
+
+  // 7. Filter Buttons
   const filterButtons = document.querySelectorAll("[data-task-filter]");
   filterButtons.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -926,7 +1077,7 @@ function initEventListeners() {
     });
   });
 
-  // Task Search
+  // 8. Search Input
   const searchInput = document.getElementById("task-search-input");
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
@@ -935,7 +1086,7 @@ function initEventListeners() {
     });
   }
 
-  // Clear Filters button in empty state
+  // 9. Clear Filters Button (in empty state)
   const clearFiltersBtn = document.getElementById("clear-filters-btn");
   if (clearFiltersBtn) {
     clearFiltersBtn.addEventListener("click", () => {
@@ -947,19 +1098,19 @@ function initEventListeners() {
     });
   }
 
-  // Continue Current Task Button
+  // 10. Continue Task Button
   const continueTaskBtn = document.getElementById("continue-task-btn");
   if (continueTaskBtn) {
     continueTaskBtn.addEventListener("click", scrollToCurrentTask);
   }
 
-  // Reset Progress Button
+  // 11. Reset Progress Button
   const resetBtn = document.getElementById("reset-progress-btn");
   if (resetBtn) {
-    resetBtn.addEventListener("click", resetProgress);
+    resetBtn.addEventListener("click", resetBackendTasks);
   }
 
-  // Technology Explorer Tabs
+  // 12. Tech Tabs
   const techTabs = document.querySelectorAll("[data-tech-tab]");
   techTabs.forEach(tab => {
     tab.addEventListener("click", () => {
@@ -968,39 +1119,66 @@ function initEventListeners() {
     });
   });
 
-  // Theme Toggle Button
+  // 13. Theme Toggles
   const themeToggle = document.getElementById("theme-toggle-btn");
   if (themeToggle) {
     themeToggle.addEventListener("click", toggleTheme);
   }
 
-  // Modal Close Events
+  const topbarThemeToggle = document.getElementById("topbar-theme-toggle");
+  if (topbarThemeToggle) {
+    topbarThemeToggle.addEventListener("click", toggleTheme);
+  }
+
+  // 14. Task Modal Close Events
   const modalCloseBtn = document.getElementById("modal-close-button");
   if (modalCloseBtn) {
     modalCloseBtn.addEventListener("click", closeTaskModal);
   }
 
-  const modal = document.getElementById("task-details-modal");
-  if (modal) {
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeTaskModal();
+  const taskModal = document.getElementById("task-details-modal");
+  if (taskModal) {
+    taskModal.addEventListener("click", (e) => {
+      if (e.target === taskModal) closeTaskModal();
     });
   }
 
-  // Global Keyboard shortcuts: Escape to close modal or mobile sidebar drawer
+  // 15. API Docs Modal Open & Close Events
+  const sidebarApiDocsLink = document.getElementById("sidebar-api-docs-link");
+  if (sidebarApiDocsLink) {
+    sidebarApiDocsLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      openApiDocsModal();
+    });
+  }
+
+  const apiDocsCloseBtn = document.getElementById("api-docs-close-btn");
+  if (apiDocsCloseBtn) {
+    apiDocsCloseBtn.addEventListener("click", closeApiDocsModal);
+  }
+
+  const apiDocsCloseBottom = document.getElementById("api-docs-close-btn-bottom");
+  if (apiDocsCloseBottom) {
+    apiDocsCloseBottom.addEventListener("click", closeApiDocsModal);
+  }
+
+  const apiDocsModal = document.getElementById("api-docs-modal");
+  if (apiDocsModal) {
+    apiDocsModal.addEventListener("click", (e) => {
+      if (e.target === apiDocsModal) closeApiDocsModal();
+    });
+  }
+
+  // 16. Keyboard Escape Key Support
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-      if (modal && modal.classList.contains("is-visible")) {
-        closeTaskModal();
-      } else if (sidebar && sidebar.classList.contains("mobile-open")) {
-        sidebar.classList.remove("mobile-open");
-        if (sidebarBackdrop) sidebarBackdrop.classList.remove("is-visible");
-        if (sidebarToggle) sidebarToggle.setAttribute("aria-expanded", "false");
-      }
+      closeTaskModal();
+      closeApiDocsModal();
+      closeMobileSidebar();
     }
   });
 
-  // Mobile Sidebar Drawer Toggle
+  // 17. Mobile Sidebar Drawer Logic
   const sidebarToggle = document.getElementById("dashboard-sidebar-toggle");
   const sidebarCloseBtn = document.getElementById("sidebar-close-btn");
   const sidebar = document.getElementById("dashboard-sidebar");
@@ -1037,30 +1215,11 @@ function initEventListeners() {
     sidebarBackdrop.addEventListener("click", closeMobileSidebar);
   }
 
-  // Close mobile sidebar on nav link click and update active state
+  // Close mobile sidebar on link click
   const sidebarLinks = document.querySelectorAll(".sidebar-nav-link");
   sidebarLinks.forEach(link => {
     link.addEventListener("click", () => {
       closeMobileSidebar();
-      if (link.getAttribute("href")?.startsWith("#")) {
-        sidebarLinks.forEach(l => l.classList.remove("active"));
-        link.classList.add("active");
-      }
     });
   });
-}
-
-// Expose functions globally for inline onclick handlers
-window.markTaskComplete = markTaskComplete;
-window.openTaskModal = openTaskModal;
-window.closeTaskModal = closeTaskModal;
-
-// Initialize on DOM load
-document.addEventListener("DOMContentLoaded", () => {
-  initTheme();
-  loadTasks();
-  initEventListeners();
-  updateProgressUI();
-  renderTasks();
-  renderTechnology("nextjs");
 });
