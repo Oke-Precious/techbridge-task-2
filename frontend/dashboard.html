@@ -437,6 +437,21 @@ dashboard.html
                         </div>
                     </div>
 
+                    <!-- Static Deployment Environment Notice (shown on static CDNs if Express backend is offline) -->
+                    <div class="static-deployment-notice" id="static-deployment-notice" style="display: none;" role="status">
+                        <span class="notice-icon">ℹ️</span>
+                        <div>
+                            <strong>Static Hosting Preview Notice:</strong>
+                            <span> This public shared link is hosted on a static web CDN where a persistent Node.js Express server cannot run. The dashboard is running in client preview mode with local data persistence.</span>
+                            <div style="margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                                <button type="button" class="btn btn-primary" id="btn-open-connect-modal" style="font-size: 0.78rem; padding: 6px 14px; border-radius: var(--radius-pill); cursor: pointer;">
+                                    🔗 Connect Render / Cloud API
+                                </button>
+                                <span style="font-size: 0.78rem; color: var(--text-muted);">or run locally with <code>npm start</code></span>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Tasks Loading State (Task 7 API fetch) -->
                     <div class="tasks-loading-state" id="tasks-loading-state" role="status" aria-live="polite">
                         <div class="loading-spinner"></div>
@@ -708,6 +723,10 @@ dashboard.html
                 <p class="modal-lead">
                     Powered by Node.js, Express, and JSON file storage (<code style="color: var(--primary);">backend/data/tasks.json</code>).
                 </p>
+                <div style="background: var(--bg-card-muted); padding: 8px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); margin-top: 8px; font-size: 0.82rem; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+                    <span><strong>Live Cloud Service:</strong> <a href="https://techbridge-task-api-23lb.onrender.com/api/health" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 700; word-break: break-all;">https://techbridge-task-api-23lb.onrender.com</a></span>
+                    <span class="method-badge method-get" style="display: inline-flex; align-items: center; gap: 4px;">● Live on Render</span>
+                </div>
             </div>
             <div class="modal-body">
                 <div class="modal-section">
@@ -788,6 +807,39 @@ dashboard.html
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" id="api-docs-close-btn-bottom">Close API Docs</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CONNECT LIVE BACKEND API MODAL ==================== -->
+    <div id="backend-config-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-backend-title">
+        <div class="modal-card" style="max-width: 600px;">
+            <button type="button" class="modal-close-btn" id="backend-config-close-btn" aria-label="Close backend configuration">
+                &times;
+            </button>
+            <div class="modal-header">
+                <span class="badge-track-pill" style="margin-bottom: 6px;">Live Cloud REST API</span>
+                <h2 class="modal-title" id="modal-backend-title">Connect Live Backend API</h2>
+                <p class="modal-lead">
+                    Connect a live cloud instance (such as your deployed <strong>Render</strong>, <strong>Railway</strong>, or <strong>Cloud Run</strong> service) to execute real REST API calls, live persistence, and automated health checks directly from this dashboard.
+                </p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <label for="custom-api-input" class="modal-section-title" style="display: block; margin-bottom: 6px;">Backend Service URL:</label>
+                    <input type="url" id="custom-api-input" class="task-search-bar" style="width: 100%; border-radius: var(--radius-sm);" placeholder="https://techbridge-task-api-23lb.onrender.com" value="https://techbridge-task-api-23lb.onrender.com">
+                    <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px;">
+                        Connected to your deployed Render cloud API. Query param override: <code>dashboard.html?api=https://techbridge-task-api-23lb.onrender.com</code>
+                    </p>
+                </div>
+                <div id="api-test-feedback" style="display: none; padding: 10px 14px; border-radius: var(--radius-sm); font-size: 0.85rem; margin-top: 8px;"></div>
+            </div>
+            <div class="modal-footer" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                <button type="button" class="btn btn-secondary" id="btn-reset-api-url" style="color: #EF4444;">Disconnect &amp; Reset</button>
+                <div style="display: flex; gap: 8px;">
+                    <button type="button" class="btn btn-secondary" id="backend-config-cancel-btn">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="btn-save-api-url">Test &amp; Connect</button>
+                </div>
             </div>
         </div>
     </div>

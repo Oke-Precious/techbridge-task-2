@@ -7661,4 +7661,45 @@ body.modal-open {
   color: #070420 !important;
 }
 
+/* Static Deployment Notice (displayed on static CDNs when Node backend is not active) */
+.static-deployment-notice {
+  grid-column: 1 / -1;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.notice-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.static-deployment-notice code {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .static-deployment-notice {
+  background: rgba(245, 158, 11, 0.14);
+  border-color: rgba(245, 158, 11, 0.35);
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .static-deployment-notice code {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FBBF24;
+}
+
 

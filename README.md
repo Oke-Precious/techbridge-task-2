@@ -55,7 +55,8 @@ techbridge-task-management/
 
 ## 3. REST API Documentation
 
-Base URL: `http://localhost:3000`
+- **Live Production URL (Render Cloud)**: `https://techbridge-task-api-23lb.onrender.com`
+- **Local Development URL**: `http://localhost:3000`
 
 ### Endpoints Table
 
