@@ -14,9 +14,9 @@
  */
 
 // ==========================================================================
-// 1. CHALLENGE DATA STORE
+// 1. CHALLENGE DATA STORE (OFFLINE FALLBACK & DEFAULT SEED)
 // ==========================================================================
-const challenges = [
+const DEFAULT_CHALLENGES = [
   // ------------------------------------------------------------------------
   // Data Analytics Challenges (4)
   // ------------------------------------------------------------------------
@@ -161,6 +161,26 @@ const challenges = [
     icon: "code"
   }
 ];
+
+// Working in-memory challenge array initialized with fallback defaults
+let challenges = [...DEFAULT_CHALLENGES];
+
+// REST API Configuration (Task 8 Challenge Hub REST API)
+const RENDER_BACKEND_URL = "https://techbridge-task-api-23lb.onrender.com";
+
+function resolveApiBaseUrl() {
+  const currentOrigin = window.location.origin;
+  const hostname = window.location.hostname;
+  if (hostname === "localhost" || hostname === "127.0.0.1" || hostname === "0.0.0.0") {
+    return currentOrigin;
+  }
+  if (hostname.includes("onrender.com")) {
+    return currentOrigin;
+  }
+  return RENDER_BACKEND_URL;
+}
+
+const API_BASE_URL = resolveApiBaseUrl();
 
 // ==========================================================================
 // 2. STATE MANAGEMENT
@@ -474,6 +494,25 @@ function openChallengeModal(challengeId, triggerElement) {
       modalCloseBtn.focus();
     }, 50);
   }
+
+  // Live REST API synchronization: Query GET /api/challenges/:id
+  fetch(`${API_BASE_URL}/api/challenges/${challengeId}`)
+    .then(res => (res.ok ? res.json() : null))
+    .then(payload => {
+      if (payload && payload.success && payload.data) {
+        const live = payload.data;
+        if (modalTitle && live.name) modalTitle.textContent = live.name;
+        if (modalShortDesc && live.shortDescription) modalShortDesc.textContent = live.shortDescription;
+        if (modalObjective && live.objective) modalObjective.textContent = live.objective;
+        if (modalEstimatedTime && live.estimatedTime) modalEstimatedTime.textContent = live.estimatedTime;
+        if (modalDeliverable && live.deliverable) modalDeliverable.textContent = live.deliverable;
+        if (modalOutcomeText && live.expectedOutcome) modalOutcomeText.textContent = live.expectedOutcome;
+        if (modalResultText && live.expectedResult) modalResultText.textContent = live.expectedResult;
+      }
+    })
+    .catch(() => {
+      // Preserves existing cached challenge data if offline
+    });
 }
 
 /**
@@ -619,8 +658,48 @@ function setupEventListeners() {
   });
 }
 
+/**
+ * Loads challenge collection from the backend REST API GET /api/challenges
+ */
+async function loadChallengesFromApi() {
+  const loadingEl = document.getElementById("challenges-loading-state");
+  const errorEl = document.getElementById("challenges-error-state");
+
+  if (loadingEl) loadingEl.style.display = "flex";
+  if (errorEl) errorEl.style.display = "none";
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 12000);
+
+    const res = await fetch(`${API_BASE_URL}/api/challenges`, {
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+
+    const payload = await res.json();
+    if (payload.success && Array.isArray(payload.data) && payload.data.length > 0) {
+      challenges = payload.data;
+      console.log(`[TechBridge API] Loaded ${challenges.length} challenges from REST endpoint: ${API_BASE_URL}/api/challenges`);
+      applyFilters();
+    }
+  } catch (err) {
+    console.warn("[TechBridge API] Unable to fetch challenges from remote API, falling back to local dataset:", err.message);
+    if (errorEl && (!challenges || challenges.length === 0)) {
+      errorEl.style.display = "block";
+    }
+  } finally {
+    if (loadingEl) loadingEl.style.display = "none";
+  }
+}
+
 // Initial Boot
 document.addEventListener("DOMContentLoaded", () => {
   setupEventListeners();
   renderChallenges(challenges);
+  loadChallengesFromApi();
 });

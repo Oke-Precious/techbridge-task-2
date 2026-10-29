@@ -9,8 +9,9 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Resolve paths to data file and frontend directory
+// Resolve paths to data files and frontend directory
 const DATA_FILE_PATH = path.resolve(__dirname, 'data', 'tasks.json');
+const DATA_CHALLENGES_PATH = path.resolve(__dirname, 'data', 'challenges.json');
 const FRONTEND_DIR = path.resolve(__dirname, '..', 'frontend');
 const ROOT_DIR = path.resolve(__dirname, '..');
 
@@ -92,6 +93,21 @@ async function writeTasksToFile(tasks) {
     await fs.rename(tempFilePath, DATA_FILE_PATH);
   } catch (error) {
     console.error('Error writing tasks.json:', error.message);
+    throw error;
+  }
+}
+
+// Read challenges from challenges.json
+async function readChallengesFromFile() {
+  try {
+    const rawData = await fs.readFile(DATA_CHALLENGES_PATH, 'utf-8');
+    const parsed = JSON.parse(rawData);
+    if (!Array.isArray(parsed)) {
+      throw new Error('challenges.json does not contain an array of challenges');
+    }
+    return parsed;
+  } catch (error) {
+    console.error('Error reading challenges.json:', error.message);
     throw error;
   }
 }
@@ -199,7 +215,7 @@ const DEFAULT_TASKS = [
     order: 7,
     title: "Task Management API",
     description: "Build a professional Node.js and Express REST API to power the Intern Dashboard with full CRUD persistence.",
-    status: "in_progress",
+    status: "completed",
     day: "Day 22",
     stage: "Stage 04 • Platform Integration",
     milestone: "Full-Stack API Integration",
@@ -213,18 +229,18 @@ const DEFAULT_TASKS = [
   {
     id: 8,
     order: 8,
-    title: "Complete Platform Integration",
-    description: "Combine the homepage, programs, tasks, challenges, and dashboard into a production-grade full-stack learning platform.",
-    status: "not_started",
-    day: "Day 26",
-    stage: "Stage 04 • Platform Integration",
-    milestone: "Platform Finale",
-    relatedUrl: "index.html",
-    urlLabel: "TechBridge Home",
-    skills: ["System Integration", "Cross-Page Navigation", "Production Polish", "Deployment Readiness"],
-    deliverable: "Unified multi-page platform integrating homepage, programs, tasks, challenges, and dashboard.",
+    title: "Final Intern Management Platform",
+    description: "Integrate the Homepage, Task 6 Intern Dashboard, Task 7 Task Management REST API, and Task 5 Challenge Hub into a unified full-stack platform.",
+    status: "completed",
+    day: "Day 26–30",
+    stage: "Stage 04 • Final Platform Integration",
+    milestone: "Platform Finale & Capstone",
+    relatedUrl: "dashboard.html",
+    urlLabel: "Intern Platform",
+    skills: ["Full-Stack Architecture", "REST API Integration", "Cross-Page Navigation", "Production Polish", "Deployment Readiness"],
+    deliverable: "Unified multi-page platform integrating homepage, dashboard, challenges, and REST APIs with full JSON persistence.",
     createdAt: "2026-10-26T10:00:00.000Z",
-    updatedAt: "2026-10-26T10:00:00.000Z"
+    updatedAt: "2026-10-27T08:30:00.000Z"
   }
 ];
 
@@ -478,6 +494,86 @@ app.post('/api/tasks/reset', async (req, res, next) => {
 });
 
 // ==========================================================================
+// CHALLENGE HUB REST API ENDPOINTS (TASK 8)
+// ==========================================================================
+
+/**
+ * GET /api/challenges
+ * Returns all challenge records as JSON with optional track/difficulty/search filtering
+ */
+app.get('/api/challenges', async (req, res, next) => {
+  try {
+    let challenges = await readChallengesFromFile();
+
+    const { track, difficulty, search } = req.query;
+
+    if (track && track !== 'all') {
+      const normalizedTrack = track.toLowerCase().replace(/-/g, ' ');
+      challenges = challenges.filter(c => 
+        (c.trackId && c.trackId === track) || 
+        c.track.toLowerCase().includes(normalizedTrack)
+      );
+    }
+
+    if (difficulty && difficulty !== 'all') {
+      challenges = challenges.filter(c => 
+        (c.difficultyId && c.difficultyId === difficulty) || 
+        c.difficulty.toLowerCase() === difficulty.toLowerCase()
+      );
+    }
+
+    if (search && search.trim()) {
+      const q = search.trim().toLowerCase();
+      challenges = challenges.filter(c => 
+        (c.title && c.title.toLowerCase().includes(q)) ||
+        (c.name && c.name.toLowerCase().includes(q)) ||
+        (c.description && c.description.toLowerCase().includes(q)) ||
+        (c.shortDescription && c.shortDescription.toLowerCase().includes(q)) ||
+        (Array.isArray(c.skills) && c.skills.some(s => s.toLowerCase().includes(q))) ||
+        (Array.isArray(c.tools) && c.tools.some(t => t.toLowerCase().includes(q)))
+      );
+    }
+
+    res.status(200).json({
+      success: true,
+      count: challenges.length,
+      data: challenges
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+/**
+ * GET /api/challenges/:id
+ * Returns a single challenge by string ID ('data-1', 'web-1') or numericId
+ */
+app.get('/api/challenges/:id', async (req, res, next) => {
+  try {
+    const idParam = req.params.id;
+    const challenges = await readChallengesFromFile();
+    const challenge = challenges.find(c => 
+      c.id === idParam || 
+      (c.numericId && c.numericId === parseInt(idParam, 10))
+    );
+
+    if (!challenge) {
+      return res.status(404).json({
+        success: false,
+        error: `Challenge not found with ID ${idParam}`
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: challenge
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// ==========================================================================
 // STATIC FRONTEND SERVING
 // ==========================================================================
 
@@ -503,6 +599,19 @@ app.get('/dashboard', (req, res) => {
 app.get('/dashboard.html', (req, res) => {
   res.sendFile(path.join(FRONTEND_DIR, 'dashboard.html'), (err) => {
     if (err) res.sendFile(path.join(ROOT_DIR, 'dashboard.html'));
+  });
+});
+
+// Challenge Hub page shortcut routes
+app.get('/challenges', (req, res) => {
+  res.sendFile(path.join(FRONTEND_DIR, 'challenges.html'), (err) => {
+    if (err) res.sendFile(path.join(ROOT_DIR, 'challenges.html'));
+  });
+});
+
+app.get('/challenges.html', (req, res) => {
+  res.sendFile(path.join(FRONTEND_DIR, 'challenges.html'), (err) => {
+    if (err) res.sendFile(path.join(ROOT_DIR, 'challenges.html'));
   });
 });
 

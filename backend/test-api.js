@@ -108,6 +108,34 @@ async function runTests() {
     const afterResetTasks = await (await fetch(`${BASE_URL}/api/tasks`)).json();
     assert(afterResetTasks.count === 8, 'Reset restored exactly 8 tasks');
 
+    // 10. Challenge Hub API: GET /api/challenges
+    console.log('\n--- 10. Testing GET /api/challenges ---');
+    const challengesRes = await fetch(`${BASE_URL}/api/challenges`);
+    assert(challengesRes.status === 200, 'GET /api/challenges returns HTTP 200');
+    const challengesData = await challengesRes.json();
+    assert(challengesData.success === true, 'GET /api/challenges response success is true');
+    assert(Array.isArray(challengesData.data), 'GET /api/challenges data is an array');
+    assert(challengesData.count === 8, `GET /api/challenges returns 8 challenges (got ${challengesData.count})`);
+
+    // 11. Challenge Hub API: GET /api/challenges with track query filter
+    console.log('\n--- 11. Testing GET /api/challenges?track=web-development ---');
+    const webChallengesRes = await fetch(`${BASE_URL}/api/challenges?track=web-development`);
+    assert(webChallengesRes.status === 200, 'GET /api/challenges?track=web-development returns HTTP 200');
+    const webData = await webChallengesRes.json();
+    assert(webData.count === 4, `Filtered challenges returns 4 web challenges (got ${webData.count})`);
+
+    // 12. Challenge Hub API: GET /api/challenges/:id
+    console.log('\n--- 12. Testing GET /api/challenges/:id ---');
+    const singleChallengeRes = await fetch(`${BASE_URL}/api/challenges/data-1`);
+    assert(singleChallengeRes.status === 200, 'GET /api/challenges/data-1 returns HTTP 200');
+    const singleChallengeData = await singleChallengeRes.json();
+    assert(singleChallengeData.success === true && singleChallengeData.data.id === 'data-1', 'GET /api/challenges/data-1 returns correct challenge object');
+
+    // 13. Challenge Hub API: Missing Challenge ID (404)
+    console.log('\n--- 13. Testing 404 for Non-Existent Challenge ---');
+    const notFoundChallengeRes = await fetch(`${BASE_URL}/api/challenges/unknown-999`);
+    assert(notFoundChallengeRes.status === 404, 'GET /api/challenges/unknown-999 returns HTTP 404');
+
     console.log('\n========================================================');
     console.log(` Test Results: ${passed} Passed, ${failed} Failed`);
     console.log('========================================================');

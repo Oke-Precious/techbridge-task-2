@@ -45,15 +45,15 @@
 
             <nav class="main-nav" aria-label="Main Navigation">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="#hero" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="programs.html" class="nav-link">Programs</a></li>
                     <li class="nav-item"><a href="internship-tasks.html" class="nav-link">Internship Tasks</a></li>
                     <li class="nav-item"><a href="challenges.html" class="nav-link">Challenges</a></li>
                     <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-                    <li class="nav-item"><a href="#internship" class="nav-link">Internship</a></li>
-                    <li class="nav-item"><a href="#community" class="nav-link">Community</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="index.html#internship" class="nav-link">Internship</a></li>
+                    <li class="nav-item"><a href="index.html#community" class="nav-link">Community</a></li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="nav-cta-wrapper">
                     <a href="https://forms.gle/8EbdSy5ttGfLZfjv5?utm_source=chatgpt.com"
@@ -79,7 +79,7 @@
                     </div>
 
                     <h1 class="hero-headline">
-                        Bridging Learning to <span class="highlight-green">Real-World</span> Experience
+                        Welcome to the <span class="highlight-green">TechBridge</span> Intern Management Platform
                     </h1>
 
                     <div class="official-tagline-badge">
@@ -88,14 +88,12 @@
                     </div>
 
                     <p class="hero-description">
-                        TechBridge provides practical learning opportunities that help participants strengthen their
-                        skills through project-based experience and exposure to real-world work scenarios.
+                        A unified full-stack management platform integrating hands-on technical challenges, 30-day task milestones, REST API persistence, and dynamic progress tracking for TechBridge interns.
                     </p>
 
                     <div class="hero-actions">
-                        <a href="https://forms.gle/8EbdSy5ttGfLZfjv5?utm_source=chatgpt.com"
-                            class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">
-                            <span>Apply for Internship</span>
+                        <a href="dashboard.html" class="btn btn-primary btn-large">
+                            <span>View Intern Dashboard</span>
                             <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 aria-hidden="true">
@@ -103,8 +101,8 @@
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
                         </a>
-                        <a href="programs.html" class="btn btn-secondary btn-large">
-                            <span>Explore Programs</span>
+                        <a href="challenges.html" class="btn btn-secondary btn-large">
+                            <span>Explore Challenge Hub</span>
                         </a>
                     </div>
 
@@ -280,6 +278,145 @@
                         <div class="info-text-group">
                             <span class="info-label">Practical Exposure</span>
                             <span class="info-value">Real-World Work Scenarios</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TASK 8: PLATFORM VALUE & OVERVIEW SECTION ==================== -->
+        <section class="platform-overview-section" id="platform-overview" style="padding: 80px 0; background: var(--bg-card);">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="pill-tag">UNIFIED INTERN PLATFORM</span>
+                    <h2 class="section-heading">Everything TechBridge Interns Need to Excel</h2>
+                    <p class="section-lead" style="max-width: 680px; margin: 0 auto 32px;">
+                        The TechBridge Intern Management Platform brings the entire 30-day curriculum into an integrated environment: track tasks, execute challenges, sync with REST APIs, and verify progress.
+                    </p>
+                </div>
+
+                <!-- 5 Intern Value Points -->
+                <div class="value-points-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 50px;">
+                    <div class="value-point-card" style="background: var(--bg-body); border: 1px solid var(--border-card); border-radius: var(--radius-sm); padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+                        <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(57, 184, 10, 0.15); color: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">01</div>
+                        <h3 style="font-size: 1rem; font-weight: 700; color: var(--secondary);">Structured Curriculum</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">Chronological 30-day milestone trajectory designed for job-ready skills.</p>
+                    </div>
+                    <div class="value-point-card" style="background: var(--bg-body); border: 1px solid var(--border-card); border-radius: var(--radius-sm); padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+                        <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(57, 184, 10, 0.15); color: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">02</div>
+                        <h3 style="font-size: 1rem; font-weight: 700; color: var(--secondary);">Dual-Track Challenges</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">8 real-world challenges spanning Web Development and Data Analytics.</p>
+                    </div>
+                    <div class="value-point-card" style="background: var(--bg-body); border: 1px solid var(--border-card); border-radius: var(--radius-sm); padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+                        <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(57, 184, 10, 0.15); color: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">03</div>
+                        <h3 style="font-size: 1rem; font-weight: 700; color: var(--secondary);">Real-Time Progress</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">Automated milestone analytics with live percentage completion bars.</p>
+                    </div>
+                    <div class="value-point-card" style="background: var(--bg-body); border: 1px solid var(--border-card); border-radius: var(--radius-sm); padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+                        <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(57, 184, 10, 0.15); color: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">04</div>
+                        <h3 style="font-size: 1rem; font-weight: 700; color: var(--secondary);">REST API Persistence</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">Node.js and Express REST backend with live JSON file read/write operations.</p>
+                    </div>
+                    <div class="value-point-card" style="background: var(--bg-body); border: 1px solid var(--border-card); border-radius: var(--radius-sm); padding: 20px; display: flex; flex-direction: column; gap: 8px;">
+                        <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(57, 184, 10, 0.15); color: var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">05</div>
+                        <h3 style="font-size: 1rem; font-weight: 700; color: var(--secondary);">Portfolio Deliverables</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">Production-grade capstone code suitable for GitHub and professional presentation.</p>
+                    </div>
+                </div>
+
+                <!-- Platform Feature Cards -->
+                <div class="platform-features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-bottom: 60px;">
+                    <div class="feature-card" style="background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                                <span class="pill-tag" style="background: rgba(13, 0, 77, 0.08); color: var(--secondary);">TASK 6 UPGRADE</span>
+                                <span style="font-size: 0.8rem; font-weight: 700; color: var(--primary);">Interactive UI</span>
+                            </div>
+                            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--secondary); margin-bottom: 12px;">Intern Dashboard</h3>
+                            <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+                                Comprehensive intern dashboard featuring KPI summary metrics, progress ring visualization, live task search, status filtering, and dark mode.
+                            </p>
+                        </div>
+                        <a href="dashboard.html" class="btn btn-primary" style="align-self: flex-start;">Open Dashboard &rarr;</a>
+                    </div>
+
+                    <div class="feature-card" style="background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                                <span class="pill-tag" style="background: rgba(57, 184, 10, 0.12); color: var(--primary);">TASK 7 BACKEND</span>
+                                <span style="font-size: 0.8rem; font-weight: 700; color: var(--secondary);">Express REST API</span>
+                            </div>
+                            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--secondary); margin-bottom: 12px;">Task Management API</h3>
+                            <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+                                High-performance Node.js REST API providing /api/tasks, status transitions, JSON file persistence, atomic file writes, and health checks.
+                            </p>
+                        </div>
+                        <a href="dashboard.html#internship-tasks" class="btn btn-secondary" style="align-self: flex-start;">View Tasks API &rarr;</a>
+                    </div>
+
+                    <div class="feature-card" style="background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                                <span class="pill-tag" style="background: rgba(13, 0, 77, 0.08); color: var(--secondary);">TASK 5 &amp; 8</span>
+                                <span style="font-size: 0.8rem; font-weight: 700; color: var(--primary);">Challenge API</span>
+                            </div>
+                            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--secondary); margin-bottom: 12px;">Challenge Hub</h3>
+                            <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+                                Interactive challenge explorer powered by /api/challenges with track filtering, difficulty pills, live keyword search, and detailed modal specifications.
+                            </p>
+                        </div>
+                        <a href="challenges.html" class="btn btn-primary" style="align-self: flex-start;">Explore Challenges &rarr;</a>
+                    </div>
+
+                    <div class="feature-card" style="background: var(--bg-card); border: 1px solid var(--border-card); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                                <span class="pill-tag" style="background: rgba(57, 184, 10, 0.12); color: var(--primary);">CONTINUOUS TRACKING</span>
+                                <span style="font-size: 0.8rem; font-weight: 700; color: var(--secondary);">Live Metrics</span>
+                            </div>
+                            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--secondary); margin-bottom: 12px;">Progress Analytics</h3>
+                            <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+                                Synchronous state calculation between client and server, automatically computing completion percentages across all 8 internship milestones.
+                            </p>
+                        </div>
+                        <a href="dashboard.html" class="btn btn-secondary" style="align-self: flex-start;">Check Status &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- How It Works Workflow Section -->
+                <div class="how-it-works-box" style="background: var(--bg-body); border: 1px solid var(--border-card); border-radius: var(--radius-lg); padding: 40px 30px;">
+                    <div class="section-header text-center" style="margin-bottom: 36px;">
+                        <span class="pill-tag">HOW IT WORKS</span>
+                        <h3 style="font-size: 1.7rem; font-weight: 800; color: var(--secondary); margin-top: 8px;">The TechBridge Intern Learning Workflow</h3>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="width: 36px; height: 36px; border-radius: 50%; background: var(--secondary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">1</span>
+                                <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--secondary); margin: 0;">Explore Challenges</h4>
+                            </div>
+                            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0;">Browse real-world problems in the Challenge Hub, filtering by track and difficulty.</p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="width: 36px; height: 36px; border-radius: 50%; background: var(--secondary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">2</span>
+                                <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--secondary); margin: 0;">Complete Tasks</h4>
+                            </div>
+                            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0;">Execute chronological tasks across HTML5, CSS3, JavaScript, and Node.js REST APIs.</p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="width: 36px; height: 36px; border-radius: 50%; background: var(--secondary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">3</span>
+                                <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--secondary); margin: 0;">Track Progress</h4>
+                            </div>
+                            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0;">Use the Intern Dashboard to update task statuses and observe live metrics.</p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <span style="width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">4</span>
+                                <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--secondary); margin: 0;">Practical Experience</h4>
+                            </div>
+                            <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0;">Graduate with a verified full-stack portfolio ready for industry roles.</p>
                         </div>
                     </div>
                 </div>

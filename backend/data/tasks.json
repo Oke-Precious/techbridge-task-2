@@ -130,7 +130,7 @@
     "order": 7,
     "title": "Task Management API",
     "description": "Build a professional Node.js and Express REST API to power the Intern Dashboard with full CRUD persistence.",
-    "status": "in_progress",
+    "status": "completed",
     "day": "Day 22",
     "stage": "Stage 04 • Platform Integration",
     "milestone": "Full-Stack API Integration",
@@ -150,22 +150,23 @@
   {
     "id": 8,
     "order": 8,
-    "title": "Complete Platform Integration",
-    "description": "Combine the homepage, programs, tasks, challenges, and dashboard into a production-grade full-stack learning platform.",
-    "status": "not_started",
-    "day": "Day 26",
-    "stage": "Stage 04 • Platform Integration",
-    "milestone": "Platform Finale",
-    "relatedUrl": "index.html",
-    "urlLabel": "TechBridge Home",
+    "title": "Final Intern Management Platform",
+    "description": "Integrate the Homepage, Task 6 Intern Dashboard, Task 7 Task Management REST API, and Task 5 Challenge Hub into a unified full-stack platform.",
+    "status": "completed",
+    "day": "Day 26–30",
+    "stage": "Stage 04 • Final Platform Integration",
+    "milestone": "Platform Finale & Capstone",
+    "relatedUrl": "dashboard.html",
+    "urlLabel": "Intern Platform",
     "skills": [
-      "System Integration",
+      "Full-Stack Architecture",
+      "REST API Integration",
       "Cross-Page Navigation",
       "Production Polish",
       "Deployment Readiness"
     ],
-    "deliverable": "Unified multi-page platform integrating homepage, programs, tasks, challenges, and dashboard.",
+    "deliverable": "Unified multi-page platform integrating homepage, dashboard, challenges, and REST APIs with full JSON persistence.",
     "createdAt": "2026-10-26T10:00:00.000Z",
-    "updatedAt": "2026-10-26T10:00:00.000Z"
+    "updatedAt": "2026-10-27T08:30:00.000Z"
   }
 ]
